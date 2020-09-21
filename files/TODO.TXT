@@ -1,0 +1,18 @@
+0) size text menù
+
+1) FORM REGISTRAZIONE
+   . vedere come funziona choise per gender
+   . campo aboutMe , specificare il CharField ?
+   . verifica validazione form
+   . eventualmente vedere i metodi commentati
+   . registrare i campi in admin.py
+
+2) LE MIE CASCA
+   . aggiustare l'url da email(username) a pk  ----->  FATTO
+
+
+
+3) per futuro controllo errori https://sentry.io/welcome/
+
+
+4) ricordare test per la chat in file settings.py 

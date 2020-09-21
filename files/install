@@ -1,0 +1,5 @@
+sudo apt install redis-server
+sudo apt install django-crispy-forms
+sudo apt install pillow
+sudo apt install django-resized
+sudo apt install channel

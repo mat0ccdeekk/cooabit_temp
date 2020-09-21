@@ -1,0 +1,64 @@
+Starting social_site as 
+ubuntu cd /home/ubuntu/social_site source
+/home/ubuntu/gunicorn_start.bash: line 8: /home/ubuntu/django_venv/bin/activate: Permission denied
+declare -x INVOCATION_ID="069484ec984e4a9fb5ae5966d75e9374"
+declare -x JOURNAL_STREAM="9:76527"
+declare -x LANG="en_US.UTF-8"
+declare -x LC_ALL="en_US.UTF-8"
+declare -x OLDPWD
+declare -x PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+declare -x PWD="/"
+declare -x SHLVL="1"
+declare -x SUPERVISOR_ENABLED="1"
+declare -x SUPERVISOR_GROUP_NAME="social_site"
+declare -x SUPERVISOR_PROCESS_NAME="social_site"
+declare -x SUPERVISOR_SERVER_URL="unix:///var/run/supervisor.sock"
+/home/ubuntu/gunicorn_start.bash: line 13: exec: gunicorn: not found
+Starting social_site as 
+ubuntu cd /home/ubuntu/social_site source
+/home/ubuntu/gunicorn_start.bash: line 8: /home/ubuntu/django_venv/bin/activate: Permission denied
+declare -x INVOCATION_ID="069484ec984e4a9fb5ae5966d75e9374"
+declare -x JOURNAL_STREAM="9:76527"
+declare -x LANG="en_US.UTF-8"
+declare -x LC_ALL="en_US.UTF-8"
+declare -x OLDPWD
+declare -x PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+declare -x PWD="/"
+declare -x SHLVL="1"
+declare -x SUPERVISOR_ENABLED="1"
+declare -x SUPERVISOR_GROUP_NAME="social_site"
+declare -x SUPERVISOR_PROCESS_NAME="social_site"
+declare -x SUPERVISOR_SERVER_URL="unix:///var/run/supervisor.sock"
+/home/ubuntu/gunicorn_start.bash: line 13: exec: gunicorn: not found
+Starting social_site as 
+ubuntu cd /home/ubuntu/social_site source
+/home/ubuntu/gunicorn_start.bash: line 8: /home/ubuntu/django_venv/bin/activate: Permission denied
+declare -x INVOCATION_ID="069484ec984e4a9fb5ae5966d75e9374"
+declare -x JOURNAL_STREAM="9:76527"
+declare -x LANG="en_US.UTF-8"
+declare -x LC_ALL="en_US.UTF-8"
+declare -x OLDPWD
+declare -x PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+declare -x PWD="/"
+declare -x SHLVL="1"
+declare -x SUPERVISOR_ENABLED="1"
+declare -x SUPERVISOR_GROUP_NAME="social_site"
+declare -x SUPERVISOR_PROCESS_NAME="social_site"
+declare -x SUPERVISOR_SERVER_URL="unix:///var/run/supervisor.sock"
+/home/ubuntu/gunicorn_start.bash: line 13: exec: gunicorn: not found
+Starting social_site as 
+ubuntu cd /home/ubuntu/social_site source
+/home/ubuntu/gunicorn_start.bash: line 8: /home/ubuntu/django_venv/bin/activate: Permission denied
+declare -x INVOCATION_ID="069484ec984e4a9fb5ae5966d75e9374"
+declare -x JOURNAL_STREAM="9:76527"
+declare -x LANG="en_US.UTF-8"
+declare -x LC_ALL="en_US.UTF-8"
+declare -x OLDPWD
+declare -x PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+declare -x PWD="/"
+declare -x SHLVL="1"
+declare -x SUPERVISOR_ENABLED="1"
+declare -x SUPERVISOR_GROUP_NAME="social_site"
+declare -x SUPERVISOR_PROCESS_NAME="social_site"
+declare -x SUPERVISOR_SERVER_URL="unix:///var/run/supervisor.sock"
+/home/ubuntu/gunicorn_start.bash: line 13: exec: gunicorn: not found
