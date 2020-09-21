@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{%  load crispy_forms_tags %}
+
+{% load static %}
+
+{% block head_title %}{{ block.super }} - {{ user.first_name }} {{ user.last_name }} {% endblock head_title %}
+
+{% block headcontent %}
+<link href="{% static 'css/chat.css' %}" rel="stylesheet">
+
+{% endblock headcontent %}
+
+{% block content %}
+
+<div class="container pt-5">
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 shadow p-3 mb-5 bg-white rounded">
+  <ul class="list-group">
+{% if request.user.is_authenticated  %}
+<p><h5>Ecco le case con un match attivo , clicca sul pulsante e inizia a conoscere i tuoi futuri coinquilini.</h5></p>
+{% for casa, coinqulino in utenti.items %}
+
+<li class="media pt-3">
+  <a href="{{ casa.get_absolute_url }}">
+     <img src="{{casa.foto1.url}}" class="mr-3 rounded-lg" alt="...">
+  </a>
+     <div class="media-body">
+       <h5>{{casa.tipo_immobile}}</h5>
+       <br>
+
+       <div class="input-group-append">
+       &nbsp
+       {% if coinqulino|length  >= 3 %}
+            <a href="/chat/home23456/"><button type="submit" class="btn btn-primary btn-lg active">
+              Chat
+            </button></a>
+        {% else %}
+            <button  type="submit" class="btn btn-primary btn-lg active" id="button-addon2"  type="submit" disabled>Chat</button>
+        {% endif %}
+       </div>
+
+       <!-- LISTA COINQUILINI -->
+
+       <!-- <h4>{{casa.tipo_immobile}}</h4>
+       <hr>
+       <p>puoi conoscere :
+         {% for coinq in coinqulino %}
+             {{coinq.first_name}},
+         {% endfor %}
+
+         in ogni caso continua a mettere le tue preferenze
+
+       </p> -->
+     </div>
+ </li>
+<hr>
+
+{% empty %}
+<hr>
+<div class="container-fluid text-center ">
+<img class="img-fluid max-width: 100%; height: 100%; "src="https://image.freepik.com/free-vector/flat-t-rex-background_23-2148172416.jpg" alt="">
+
+<h5 class="pt-3">Non ci sono ancora match, non preoccuparti, continua a cercare. Ogni giorno nuove stanze / case sono disponibili </h5></div>
+{% endfor %}
+
+<p>
+  <p>
+  {% if user.profile.link1 != "zero" %}
+  <h4>Ci siamo riusciti, puoi conoscere i tuoi futuri coinqulini cip e ciop per la casa di Milazzo : </h4>
+  <span>Alle ore 18 visita il seguente link : <a href="{{user.profile.link1}}">{{user.profile.link1}}</a></span>
+  <span>Inserisci la password : {{user.profile.pass1}}</span>
+  <span>vuoi collegarti da smartphone o altri dispositivi, scarica l'app zoom e usa l'ID : {{user.profile.idZoom1}}</span>
+  <hr>
+  {% endif %}
+  </p>
+
+
+   {% if user.profile.link2 != "zero" %}
+   <p>
+       copia il link zoom : {{user.profile.link2}}
+       <br>
+       password : {{user.profile.pass2}}
+       Vuoi collegarti da smartphone o altri dispositivi, ID : {{user.profile.idZoom2}}
+    </p>
+    {% endif %}
+
+    <!-- CONFERMA MATCH -->
+
+    <!-- <h4>Avete raggiunto un accordo ?</h4>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="input-group mb-3" >
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="conferma" value="Si", id="form.conferma">
+          <label class="form-check-label" for="inlineRadio1">si</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="conferma" value="No" id="form.conferma">
+          <label class="form-check-label" for="inlineRadio2">no</label>
+        </div>
+        <input type="hidden" id="form.user"  name="user" value="{{request.user.username}}">
+
+        <div class="input-group-append">
+        &nbsp
+        <button type="submit" class="btn btn-primary btn-lg active" id="button-addon2"  type="submit">Invia</button>
+        </div>
+      </div>
+    </form> -->
+
+
+
+{% else %}
+  <h3 align="center"> <a href="{% url 'login' %}">Effetua il login</a></h3>
+{% endif %}
+</ul>
+</div>
+</div>
+</div>
+
+{% endblock content %}
+
+
+
+<!--
+{% for key1, value in d_utente.items %}
+        {% for casa in lista_case %}
+          {% for t in casa.thunders.all %}
+            {% if t != user  %}
+            {% if t.id == key1  %}
+            <a type="button" class="btn btn-primary " href="{% url 'dialogs_detail' t.username %}"><h5>{{t.first_name}} {{t.last_name}}</h5></a>
+
+            <li class="media pt-3">
+              <img src="{{casa.foto1.url}}" class="mr-3 rounded-lg" alt="...">
+              <div class="media-body">
+                {{casa.tipo_immobile}}
+                <form  action="{% url 'thunder_casa' %}" method="post">
+                  {% csrf_token %}12                    {% if  request.user.is_authenticated and casa in user.thunders.all %}
+                          <button type="submit" name="casa_id" value="{{ casa.id }}" class="btn btn-info btn-sm"><i class="fas fa-house-user"> </i> dislike</button>
+                    {% else %}
+                          <button type="submit" name="casa_id" value="{{ casa.id }}" class="btn btn-primary btn-sm"><i class="fas fa-house-user"> </i>like</button>
+                    {% endif %}
+                </form>
+              </div>
+            </li>
+            {%endif%}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+        <hr>
+  {% empty %}
+  <div class="container-fluid text-center ">
+<img class="img-fluid max-width: 100%; height: 100%; "src="https://image.freepik.com/free-vector/flat-t-rex-background_23-2148172416.jpg" alt="">
+
+  <h5 class="pt-3">Non ci sono ancora match, non preoccuparti e continua a cercare. Ogni giorno nuove stanze/ case sono disponibili </h5></div>
+{% endfor %} -->

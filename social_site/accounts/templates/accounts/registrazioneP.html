@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{%  load crispy_forms_tags %}
+
+{% block head_title %}{{ block.super }} - registrazione {% endblock head_title %}
+
+{% block headcontent %}
+{% endblock headcontent %}
+
+{% block content %}
+<div class="row">
+  <div class="container text-center">
+  <br><br>
+  {% if request.user.is_authenticated  %}
+  <h3>Ciao {{user.first_name}} sei già registrato</h3>
+  {% else %}
+  <h2 class="well">Inserisci la tua casa qui</h2>
+  <br>
+  <div class="row justify-content-center">
+    <div class="row">
+      <form method="post" novalidate>
+        {% csrf_token %}
+        {% include 'partials/_flash_messages.html' %}
+        {{ form | crispy }}
+        <a href="javascript:;"
+           onClick="window.open('{% url 'condition_view' %}', 'titolo', 'width=600, height=600, resizable, status, scrollbars=1, location');">
+           <label for="conditionID">Condizioni d'uso e privacy</label>
+        </a><input type="checkbox" name="condition" value="condition"  id="conditionID" required>
+<br>
+          <a href="{% url 'login' %}" id="login">
+           <label for="login">Effettua il Login</label>
+        </a> &nbsp &nbsp
+          <hr>
+        <div>
+          <button type="submit" class="btn btn-lg btn-info center-block">Register</button>
+        </div>
+			</form>
+		</div>
+  </div>
+  {% endif %}
+  </div>
+</div>
+{% endblock content %}

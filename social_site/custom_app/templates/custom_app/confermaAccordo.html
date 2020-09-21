@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{%  load crispy_forms_tags %}
+
+{% load static %}
+
+{% block head_title %}{{ block.super }} - {{ user.first_name }} {{ user.last_name }} grazie {% endblock head_title %}
+
+{% block headcontent %}
+
+{% endblock headcontent %}
+
+{% block content %}
+  <div class="container">
+    <br>
+    <br>
+    <br>
+    <br>
+
+      <h3>Grazie, sarai contattato a breve !</h3>
+    
+  </div>
+{% endblock content %}

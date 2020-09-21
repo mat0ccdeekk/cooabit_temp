@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%  load crispy_forms_tags %}
+
+{% block head_title %}{{ block.super }} - registrazione {% endblock head_title %}
+{% block headcontent %}
+{% endblock headcontent %}
+
+
+{% block content %}
+
+  <div class="container text-center">
+  <br><br>
+  <p>Email presenti nel DB</p>
+  {% if request.user.is_authenticated  %}
+    <textarea  rows="8" cols="80">
+      {% for e in email %} [ {{e}} {{e.last_name}} ] {% endfor %}
+    </textarea>
+    <hr>
+    <p>La textarea accetta html e css, inserire la parola name per il nome. </p>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form.email | as_crispy_field}}
+      <button  type="submit" class="btn btn-primary btn-lg active" disabled>Invia email a todo</button>
+      <br>
+      {% include 'partials/_flash_messages.html' %}
+
+    </form>
+  </div>
+  {% endif %}
+</div>
+</div>
+
+{% endblock content %}

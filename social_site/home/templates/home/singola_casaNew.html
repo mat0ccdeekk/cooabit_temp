@@ -1,0 +1,675 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}{{ block.super }} - {{ casa.nome }} {% endblock head_title %}
+
+{% block headcontent %}
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Mobirise v4.10.4, mobirise.com">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<link rel="shortcut icon" href="{% static '/css/assets/images/logo4.png" type="image/x-icon' %}">
+<meta name="description" content="">
+<link rel="stylesheet" href="{% static '/css/compact-gallery.css' %}">
+<link rel="stylesheet" href="{% static '/css/assets/web/assets/mobirise-icons/mobirise-icons.css' %}">
+<link rel="stylesheet" href="{% static '/css/assets/tether/tether.min.css' %}">
+<link rel="stylesheet" href="{% static '/css/assets/bootstrap/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static '/css/assets/bootstrap/css/bootstrap-grid.min.css' %}">
+<link rel="stylesheet" href="{% static '/css/assets/bootstrap/css/bootstrap-reboot.min.css' %}">
+<link rel="stylesheet" href="{% static '/css/assets/theme/css/style.css' %}">
+<link rel="stylesheet" href="{% static '/css/assets/gallery/style.css' %}">
+<link rel="stylesheet" href="{% static '/css/assets/mobirise/css/mbr-additional.css' %}" type="text/css">
+
+{% endblock headcontent %}
+
+{% block content %}
+<br>
+<br>
+<!------------------------------------------------------------->
+<div class="section pt-5 pt-lg-6">
+    <div class="container">
+      <div class="row">
+        <div class="col"><!-- Tab -->
+          <!-- <nav>
+          <div class="nav nav-tabs flex-column flex-md-row shadow-soft border-soft mb-3" id="nav-tab" role="tablist">
+          <a
+          class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab"
+          aria-controls="nav-about" aria-selected="true"><i class="far fa-address-card"> </i> Descrizione
+          </a> -->
+
+          <!-- <a
+          class="nav-item nav-link" id="nav-amenities-tab" data-toggle="tab" href="#nav-amenities" role="tab"
+          aria-controls="nav-amenities" aria-selected="false"><i class="fas fa-cubes"></i>Servizi
+          </a> -->
+
+         <!-- <a
+         class="nav-item nav-link " id="nav-video-tab" data-toggle="tab" href="#nav-video" role="tab"
+         aria-controls="nav-video" aria-selected="false"><i class="far fa-play-circle"></i>Video
+         </a> -->
+
+          <!-- <a
+          class="nav-item nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews" role="tab"
+          aria-controls="nav-reviews" aria-selected="false"><i class="far fa-star"></i>Recensioni
+          </a> -->
+
+          <!-- <a
+          class="nav-item nav-link" id="nav-location-tab" data-toggle="tab" href="#nav-location" role="tab"
+          aria-controls="nav-location" aria-selected="false"><i class="fas fa-map-marker-alt"> </i> Posizione
+          </a>
+        </div>
+          </nav><!-- About Tab -->
+
+          <div class="tab-content mt-5 mb-3" id="nav-tabContent">
+            <div class="tab-pane fade active show" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab"><h2
+              class="font-weight-normal">{{casa.tipo_immobile}}</h2>
+              <br>
+              <div class="d-block d-md-flex"><h6 class="text-secondary font-weight-light"><i
+                class="fas fa-check-circle mr-1 pr-1"></i>Verified</h6><span class="lh-120 ml-md-4"><i
+                class="fas fa-map-marker-alt mr-1 pr-1"></i>{{casa.citta}}
+                {% if casa.zona != "none" %}, zona {{casa.zona}} {% else %} {% endif %}
+                {% if casa.via != "none" %}, {{casa.via}} {% else %} {% endif %}
+                <a data-fancybox="" href="https://www.google.com/maps/place/{{casa.citta}}+{{via}}"
+                class="text-primary ml-md-3">Visualizza sulla mappa</a></span>
+              </div>
+              <br>
+
+<!-- gallery -->
+
+              <p><span class="font-weight-bold">L'appartamento - </span>
+                {{casa.descrizione}}
+              </p>
+              <div class="row shadow-sm mt-5">
+                <div class="col-6 col-xl-3 card bg-soft">
+                  <div class="card-body text-center">
+                    <div class="icon"><i class="fas fa-euro-sign"></i></div><!-- Heading --><p
+                    class="font-weight-normal h4 mt-3 mb-0"><span class="counter text-dark mr-2">{{casa.prezzo}}</span></p>
+                    <!-- Text --><p class="text-muted mb-0">Mese</p></div>
+                </div>
+                <div class="col-6 col-xl-3 card bg-soft border-left">
+                  <div class="card-body text-center">
+                    <div class="icon"><i class="fas fa-ruler-combined"></i></div><!-- Heading --><p
+                    class="font-weight-normal mt-3 mb-0 h4"><span class="counter text-dark mr-2">{{casa.m_quadri}}</span>mq</p>
+                    <!-- Text --><p class="text-muted mb-0">Spazio totale</p></div>
+                </div>
+                <div class="col-6 col-xl-3 card bg-soft border-left">
+                  <div class="card-body text-center">
+                    <div class="icon"><i class="fas fa-users"></i></div><!-- Heading --><p
+                    class="font-weight-normal mt-3 mb-0 h4"><span class="counter text-dark mr-2">{{casa.postiTotali}}</span></p>
+                    <!-- Text --><p class="text-muted mb-0">Persone</p></div>
+                </div>
+                <div class="col-6 col-xl-3 card bg-soft border-left">
+                  <div class="card-body text-center">
+                    <div class="icon"><i class="fas fa-toilet"></i></div><!-- Heading --><p
+                    class="font-weight-normal mt-3 mb-0 h4"><span class="text-dark mr-2">{{casa.bagni}}</span></p><!-- Text -->
+                    <p class="text-muted mb-0">Bagni totali</p></div>
+                </div>
+              </div>
+              <section class="gallery-block compact-gallery">
+                  <div class="container">
+                      <div class="heading">
+                          <h2>Compact Gallery</h2>
+                      </div>
+                      <div class="row no-gutters">
+                          <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                              <a class="lightbox" href="../img/image1.jpg">
+                                  <img class="img-fluid image" src="../img/image1.jpg">
+                                  <span class="description">
+                                      <span class="description-heading">Lorem Ipsum</span>
+                                      <span class="description-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                                  </span>
+                              </a>
+                          </div>
+                          <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                              <a class="lightbox" href="../img/image2.jpg">
+                                  <img class="img-fluid image" src="../img/image2.jpg">
+                                  <span class="description">
+                                      <span class="description-heading">Lorem Ipsum</span>
+                                      <span class="description-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                                  </span>
+                              </a>
+                          </div>
+                          <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                              <a class="lightbox" href="../img/image3.jpg">
+                                  <img class="img-fluid image" src="../img/image3.jpg">
+                                  <span class="description">
+                                      <span class="description-heading">Lorem Ipsum</span>
+                                      <span class="description-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                                  </span>
+                              </a>
+                          </div>
+                          <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                              <a class="lightbox" href="../img/image4.jpg">
+                                  <img class="img-fluid image" src="../img/image4.jpg">
+                                  <span class="description">
+                                      <span class="description-heading">Lorem Ipsum</span>
+                                      <span class="description-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                                  </span>
+                                  </a>
+                              </div>
+                          <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                              <a class="lightbox" href="../img/image5.jpg">
+                                  <img class="img-fluid image" src="../img/image5.jpg">
+                                  <span class="description">
+                                      <span class="description-heading">Lorem Ipsum</span>
+                                      <span class="description-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                                  </span>
+                              </a>
+                          </div>
+                          <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                              <a class="lightbox" href="../img/image6.jpg">
+                                  <img class="img-fluid image" src="../img/image6.jpg">
+                                  <span class="description">
+                                      <span class="description-heading">Lorem Ipsum</span>
+                                      <span class="description-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                                  </span>
+                              </a>
+                          </div>
+                          <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                              <a class="lightbox" href="../img/image7.jpg">
+                                  <img class="img-fluid image" src="{{ casa.foto3.url }}">
+                                  <span class="description">
+                                      <span class="description-heading">Lorem Ipsum</span>
+                                      <span class="description-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                                  </span>
+                              </a>
+                          </div>
+                          <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                              <a class="lightbox" href="../img/image8.jpg">
+                                  <img class="img-fluid image" src="../img/image8.jpg">
+                                  <span class="description">
+                                      <span class="description-heading">Lorem Ipsum</span>
+                                      <span class="description-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                                  </span>
+                              </a>
+                          </div>
+                          <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                              <a class="lightbox" href="../img/image9.jpg">
+                                  <img class="img-fluid image" src="../img/image9.jpg">
+                                  <span class="description">
+                                      <span class="description-heading">Lorem Ipsum</span>
+                                      <span class="description-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                                  </span>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+              </section>
+
+            <!-- <div class="fancy-gallery">
+
+              <section class="mbr-gallery mbr-slider-carousel cid-ruuHivYwWr" id="gallery1-2">
+                <div class="container">
+                  <div><!-- Filter --><!-- Gallery -->
+                    <!-- <div class="mbr-gallery-row" style="position: relative; height: 380.438px;">
+                      <div class="mbr-gallery-layout-default">
+                        <div>
+                          <div>
+                            {% if casa.foto1 != "none" %}
+                            <div class="mbr-gallery-item mbr-gallery-item--p1" data-video-url="false" data-tags="Animated"
+                            style="position: absolute; left: 0%; top: 0px;">
+                              <div href="#lb-gallery1-2" data-slide-to="0" data-toggle="modal"><img
+                                src="{{ casa.foto1.url }}" alt="" title=""><span class="icon-focus"></span></div>
+                            </div>
+                            {% else %} {% endif %}
+
+                            {% if casa.foto2 != "none" %}
+                            <div class="mbr-gallery-item mbr-gallery-item--p1" data-video-url="false" data-tags="Animated"
+                            style="position: absolute; left: 24.955%; top: 0px;">
+                              <div href="#lb-gallery1-2" data-slide-to="1"  data-toggle="modal"><img
+                                src="{{ casa.foto2.url }}" alt="" title=""><span class="icon-focus"></span></div>
+                            </div>
+                            {% else %} {% endif %}
+
+                            {% if casa.foto3 != "none" %}
+                            <div class="mbr-gallery-item mbr-gallery-item--p1" data-video-url="false" data-tags="Animated"
+                            style="position: absolute; left: 50%; top: 0px;">
+                              <div href="#lb-gallery1-2" data-slide-to="2" data-toggle="modal"><img
+                                src="{{ casa.foto3.url }}" alt="" title=""><span class="icon-focus"></span></div>
+                            </div>
+                            {% else %} {% endif %}
+
+                            {% if casa.foto4 != "none" %}
+                            <div class="mbr-gallery-item mbr-gallery-item--p1" data-video-url="false" data-tags="Animated"
+                            style="position: absolute; left: 74.955%; top: 0px;">
+                              <div href="#lb-gallery1-2" data-slide-to="3"  data-toggle="modal"><img
+                                src="{{ casa.foto4.url }}" alt="" title=""><span class="icon-focus"></span></div>
+                            </div>
+                            {% else %} {% endif %}
+
+                            {% if casa.foto5 != "none" %}
+                            <div class="mbr-gallery-item mbr-gallery-item--p1" data-video-url="false" data-tags="Animated"
+                            style="position: absolute; left: 0%; top: 0px;">
+                              <div href="#lb-gallery1-2" data-slide-to="4" data-toggle="modal"><img
+                                src="{{ casa.foto5.url }}" alt="" title=""><span class="icon-focus"></span></div>
+                            </div>
+                            {% else %} {% endif %}
+
+                            {% if casa.foto6 != "none" %}
+                            <div class="mbr-gallery-item mbr-gallery-item--p1" data-video-url="false" data-tags="Animated"
+                            style="position: absolute; left: 24.955%; top: 0px;">
+                              <div href="#lb-gallery1-2" data-slide-to="5"  data-toggle="modal"><img
+                                src="{{ casa.foto6.url }}" alt="" title=""><span class="icon-focus"></span></div>
+                            </div>
+                            {% else %} {% endif %}
+
+                            {% if casa.foto7 != "none" %}
+                            <div class="mbr-gallery-item mbr-gallery-item--p1" data-video-url="false" data-tags="Animated"
+                            style="position: absolute; left: 50%; top: 0px;">
+                              <div href="#lb-gallery1-2" data-slide-to="6" data-toggle="modal"><img
+                                src="{{ casa.foto7.url }}" alt="" title=""><span class="icon-focus"></span></div>
+                            </div>
+                            {% else %} {% endif %}
+
+                            {% if casa.foto8 != "none" %}
+                            <div class="mbr-gallery-item mbr-gallery-item--p1" data-video-url="false" data-tags="Animated"
+                            style="position: absolute; left: 74.955%; top: 0px;">
+                              <div href="#lb-gallery1-2" data-slide-to="7" data-toggle="modal"><img
+                                src="{{ casa.foto8.url }}" alt="" title=""><span class="icon-focus"></span></div>
+                            </div>
+                            {% else %} {% endif %}
+
+
+                            {% if casa.foto9 != "none" %}
+                            <div class="mbr-gallery-item mbr-gallery-item--p1" data-video-url="false" data-tags="Animated"
+                            style="position: absolute; left: 0%; top: 0px;">
+                              <div href="#lb-gallery1-2" data-slide-to="8" data-toggle="modal"><img
+                                src="{{ casa.foto9.url }}" alt="" title=""><span class="icon-focus"></span></div>
+                            </div>
+                            {% else %} {% endif %}
+
+                            {% if casa.foto10 != "none" %}
+                            <div class="mbr-gallery-item mbr-gallery-item--p1" data-video-url="false" data-tags="Animated"
+                            style="position: absolute; left: 24.955%; top: 0px;">
+                              <div href="#lb-gallery1-2" data-slide-to="9" data-toggle="modal"><img
+                                src="{{ casa.foto10.url }}" alt="" title=""><span class="icon-focus"></span></div>
+                            </div>
+                            {% else %} {% endif %}
+
+                            {% if casa.foto11 != "none" %}
+                            <div class="mbr-gallery-item mbr-gallery-item--p1" data-video-url="false" data-tags="Animated"
+                            style="position: absolute; left: 50%; top: 0px;">
+                              <div href="#lb-gallery1-2" data-slide-to="10" data-toggle="modal"><img
+                                src="{{ casa.foto11.url }}" alt="" title=""><span class="icon-focus"></span></div>
+                            </div>
+                            {% else %} {% endif %}
+
+                            {% if casa.foto12 != "none" %}
+                            <div class="mbr-gallery-item mbr-gallery-item--p1" data-video-url="false" data-tags="Animated"
+                            style="position: absolute; left: 74.955%; top: 0px;">
+                              <div href="#lb-gallery1-2" data-slide-to="11" data-toggle="modal"><img
+                                src="{{ casa.foto12.url }}" alt="" title=""><span class="icon-focus"></span></div>
+                            </div>
+                            {% else %} {% endif %}
+
+                            {% if casa.foto13 != "none" %}
+                            <div class="mbr-gallery-item mbr-gallery-item--p1" data-video-url="false" data-tags="Animated"
+                            style="position: absolute; left: 0%; top: 0px;">
+                              <div href="#lb-gallery1-2" data-slide-to="12" data-toggle="modal"><img
+                                src="{{ casa.foto13.url }}" alt="" title=""><span class="icon-focus"></span></div>
+                            </div>
+                            {% else %} {% endif %}
+
+                            {% if casa.foto14 != "none" %}
+                            <div class="mbr-gallery-item mbr-gallery-item--p1" data-video-url="false" data-tags="Animated"
+                            style="position: absolute; left: 24.955%; top: 0px;">
+                              <div href="#lb-gallery1-2" data-slide-to="13" data-toggle="modal"><img
+                                src="{{ casa.foto14.url }}" alt="" title=""><span class="icon-focus"></span></div>
+                            </div>
+                            {% else %} {% endif %}
+
+                            {% if casa.foto15 != "none" %}
+                            <div class="mbr-gallery-item mbr-gallery-item--p1" data-video-url="false" data-tags="Animated"
+                            style="position: absolute; left: 50%; top: 0px;">
+                              <div href="#lb-gallery1-2" data-slide-to="14" data-toggle="modal"><img
+                                src="{{ casa.foto15.url }}" alt="" title=""><span class="icon-focus"></span></div>
+                            </div>
+                            {% else %} {% endif %}
+
+                            {% if casa.foto16 != "none" %}
+                            <div class="mbr-gallery-item mbr-gallery-item--p1" data-video-url="false" data-tags="Animated"
+                            style="position: absolute; left: 74.955%; top: 0px;">
+                              <div href="#lb-gallery1-2" data-slide-to="15" data-toggle="modal"><img
+                                src="{{ casa.foto16.url }}" alt="" title=""><span class="icon-focus"></span></div>
+                            </div>
+                            {% else %} {% endif %}
+
+                          </div>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div><!-- Lightbox -->
+                    <!-- <div data-app-prevent-settings="" class="mbr-slider modal fade carousel slide" tabindex="-1" data-keyboard="true"
+                         data-interval="false" id="lb-gallery1-2">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-body">
+                            <div class="carousel-inner">
+
+                              {% if casa.foto1 != "none" %}
+                              <div class="carousel-item active">
+                               <img src="{{ casa.foto1.url }}" alt="" title="" class="img-fluid">
+                              </div>
+                              {% else %}{% endif %}
+
+                              {% if casa.foto2 != "none" %}
+                              <div  class="carousel-item"><img src="{{ casa.foto2.url }}" alt="" title="" ></div>
+                              {% else %}{% endif %}
+
+                              {% if casa.foto3 != "none" %}
+                              <div  class="carousel-item"><img  src="{{ casa.foto3.url }}" alt="" title="" ></div>
+                              {% else %}{% endif %}
+
+                              {% if casa.foto4 != "none" %}
+                              <div  class="carousel-item"><img src="{{ casa.foto4.url }}" alt="" title="" ></div>
+                              {% else %}{% endif %}
+
+                              {% if casa.foto5 != "none" %}
+                              <div  class="carousel-item"><img src="{{ casa.foto5.url }}" alt="" title="" ></div>
+                              {% else %}{% endif %}
+
+                              {% if casa.foto6 != "none" %}
+                              <div  class="carousel-item"><img src="{{ casa.foto6.url }}" alt="" title=""></div>
+                              {% else %}{% endif %}
+
+                              {% if casa.foto7 != "none" %}
+                              <div class="carousel-item"><img src="{{ casa.foto7.url }}" alt="" title=""></div>
+                              {% else %}{% endif %}
+
+                              {% if casa.foto8 != "none" %}
+                              <div   class="carousel-item"><img src="{{ casa.foto8.url }}" alt="" title=""></div>
+                              {% else %}{% endif %}
+
+
+
+                              {% if casa.foto9 != "none" %}
+                              <div  class="carousel-item"><img src="{{ casa.foto9.url }}" alt="" title=""></div>
+                              {% else %}{% endif %}
+
+                              {% if casa.foto10 != "none" %}
+                              <div  class="carousel-item"><img src="{{ casa.foto10.url }}" alt="" title=""></div>
+                              {% else %}{% endif %}
+
+                              {% if casa.foto11 != "none" %}
+                              <div  class="carousel-item"><img src="{{ casa.foto11.url }}" alt="" title=""></div>
+                              {% else %}{% endif %}
+
+                              {% if casa.foto12 != "none" %}
+                              <div  class="carousel-item"><img src="{{ casa.foto12.url }}" alt="" title=""></div>
+                              {% else %}{% endif %}
+
+                              {% if casa.foto13 != "none" %}
+                              <div  class="carousel-item"><img src="{{ casa.foto13.url }}" alt="" title=""></div>
+                              {% else %}{% endif %}
+
+                              {% if casa.foto14 != "none" %}
+                              <div  class="carousel-item"><img src="{{ casa.foto14.url }}" alt="" title=""></div>
+                              {% else %}{% endif %}
+
+                              {% if casa.foto15 != "none" %}
+                              <div   class="carousel-item"><img src="{{ casa.foto15.url }}" alt="" title=""></div>
+                              {% else %}{% endif %}
+
+                              {% if casa.foto16 != "none" %}
+                              <div class="carousel-item"><img src="{{ casa.foto16.url }}" alt="" title=""></div>
+                              {% else %}{% endif %}
+                              </div>
+                            <a class="carousel-control carousel-control-prev" role="button" data-slide="prev"
+                               href="#lb-gallery1-2"><span class="mbri-left mbr-iconfont" aria-hidden="true"></span><span
+                              class="sr-only">Previous</span></a><a class="carousel-control carousel-control-next" role="button"
+                                                                    data-slide="next" href="#lb-gallery1-2"><span
+                            class="mbri-right mbr-iconfont" aria-hidden="true"></span><span class="sr-only">Next</span></a><a
+                            class="close" href="#" role="button" data-dismiss="modal"><span class="sr-only">Close</span></a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              </div> -->
+
+
+
+
+            </div>
+            <!-- End of About Tab -->
+            <!-- Video Tab-->
+            <div class="tab-pane fade " id="nav-video" role="tabpanel" aria-labelledby="nav-video-tab">
+              <div class="video-poster overlay-dark position-relative rounded"><a data-fancybox=""
+                                                                                  href="#"><span
+                class="icon icon-white icon-xl"><i class="fas fa-play-circle"></i></span> </a><img
+                src="../../assets/img/lifestyle-office.jpg" alt="Image"></div>
+            </div>
+
+            <!-- Amenities Tab -->
+            <div class="tab-pane fade" id="nav-amenities" role="tabpanel" aria-labelledby="nav-amenities-tab">
+
+                <!--basic -->
+
+            </div>
+            <!-- End of Amenities Tab -->
+            <!-- Reviews Tab -->
+            <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab"><p
+              class="font-small font-weight-light text-gray mb-3">Non ci sono ancora recensioni</p>
+              <!-- ESEMPIO RECENSIONE
+              <div class="bg-white border border-soft shadow-soft p-4 mb-4">
+                <div class="d-flex justify-content-between mb-4">
+                  <div class="d-flex align-items-center"><a href="./profile.html"
+                                                            class="btn btn-xs btn-icon-only btn-tertiary mr-2 p-1"><span
+                    class="fa fa-user"></span></a> <a href="./profile.html"
+                                                      class="font-weight-normal font-small text-gray-800">Eleanor
+                    Roosevelt</a> <span class="ml-2 font-small d-none d-md-inline">1 year ago</span></div>
+                  <div class="d-flex justify-content-end align-items-center"><span
+                    class="d-flex justify-content-center"><i class="star fa-star fas text-warning mr-2"></i> <i
+                    class="star fa-star fas text-warning mr-2"></i> <i
+                    class="star fa-star fas text-warning mr-2"></i> <i
+                    class="star fa-star fas text-warning mr-2"></i> <i class="star far fa-star text-gray"></i></span>
+                  </div>
+                </div>
+                <p class="m-0">The future belongs to those who believe in the beauty of their dreams.</p></div>
+              FINE ESEMPIO RECENSIONE -->
+              <form method="post">
+                {% csrf_token %}
+                <div class="d-flex justify-content-between align-items-center mb-3 mt-5"><h4 class="m-0">Aggiungi una recensione</h4><span class="d-flex justify-content-center stars-rating"><i
+                  class="star far fa-star text-gray mr-2" data-rating-value="1"></i> <i
+                  class="star far fa-star text-gray mr-2" data-rating-value="2"></i> <i
+                  class="star far fa-star text-gray mr-2" data-rating-value="3"></i> <i
+                  class="star far fa-star text-gray mr-2" data-rating-value="4"></i> <i
+                  class="star far fa-star text-gray" data-rating-value="5"></i></span></div>
+                <textarea name="description" class="form-control border" placeholder="" rows="6"
+                          data-bind-characters-target="#charactersRemaining" maxlength="1000" required=""></textarea>
+                <div class="d-flex justify-content-between mt-3"><small class="font-weight-light"><span
+                  id="charactersRemaining">1000</span> caratteri rimanenti</small>
+                  <button type="submit" class="btn btn-primary animate-up-2">Invia</button>
+                </div>
+              </form>
+            </div><!-- End of Reviews Tab -->
+            <div class="tab-pane fade" id="nav-location" role="tabpanel" aria-labelledby="nav-location-tab">
+              <div class="row">
+                <div class="col-12">
+                  <div class="mapouter">
+                    <div class="gmap_canvas">
+                      <iframe id="gmap_canvas"
+                              src="https://maps.google.com/maps?q={{casa.citta}}+{{via}}&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"></iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- End of tab --></div>
+        <aside class="col-12 col-lg-4 mt-3 mt-lg-0">
+          <div class="card bg-soft shadow-sm border-soft p-3">
+            <div class="d-flex align-items-baseline"><span class="h3 font-weight-bold mb-0 mr-1">€ {{casa.prezzo}}</span> <span
+              class="small">/mese  </span>
+            </div>
+          </div>
+
+            <form class="card shadow-sm border-soft mt-4 p-3"  action="{% url 'thunder_casa' %}" method="post">
+             {% csrf_token %}
+               {% if  request.user.is_authenticated and casa in user.thunders.all %}
+                     <button type="submit" name="casa_id" value="{{ casa.id }}" class="btn btn-info"><i class="fas fa-house-user"> </i>   dislike</button>
+               {% else %}
+                     <button type="submit" name="casa_id" value="{{ casa.id }}" class="btn btn-primary" ><i class="fas fa-house-user"> </i>   like</button>
+               {% endif %}
+            </form>
+
+          <div class="card shadow-sm border-soft mt-4 p-3"><h5 class="font-weight-normal"></h5>
+            <!-- basic-->
+            <div class="col-12 col-lg-12 mb-4">
+                <ul class="list-unstyled mb-0">
+
+                  {% if casa.studenti == "True" or casa.studenti == "si" %}
+                  <li class="d-flex py-1"><span class="icon icon-xs icon-primary"><i
+                    class="fas fa-check-circle mr-2"></i> </span><span>Studenti</span></li>
+
+                  <li class="d-flex py-1"><span class="icon icon-xs icon-primary"><i
+                    class="fas fa-check-circle mr-2"></i> </span><span>Posto singolo {{ prezzoStudente }} €</span></li>
+                  {% else %}
+                  {% endif %}
+
+                  <li class="d-flex py-1"><span class="icon icon-xs icon-primary"><i
+                    class="fas fa-check-circle mr-2"></i> </span><span>
+                    Condominio {% if casa.condominio > 0 %}{{casa.condominio}} € {% else %} compreso {% endif %}</span></li>
+
+                  {% if casa.mesiCaparra > 0 %}
+                  <li class="d-flex py-1"><span class="icon icon-xs icon-primary"><i
+                    class="fas fa-check-circle mr-2"></i> </span><span>Mesi caparra {{casa.mesiCaparra}}</span></li>
+                  {% else %}
+                  {% endif %}
+
+                  {% if casa.piano != "none" %}
+                  <li class="d-flex py-1"><span class="icon icon-xs icon-primary"><i
+                    class="fas fa-check-circle mr-2"></i> </span><span> {{casa.piano}} piano</span></li>
+                  {% else %}
+                  {% endif %}
+
+                  {% if casa.stanzaSingola > 0 %}
+                  <li class="d-flex py-1"><span class="icon icon-xs icon-primary"><i
+                    class="fas fa-check-circle mr-2"></i> </span><span>Stanze singole {{casa.stanzaSingola}}</span></li>
+                  {% else %}
+                  {% endif %}
+
+                  {% if casa.stanzaDoppia > 0 %}
+                  <li class="d-flex py-1"><span class="icon icon-xs icon-primary"><i
+                    class="fas fa-check-circle mr-2"></i> </span><span>Stanze doppie {{casa.stanzaDoppia}}</span></li>
+                    {% else %}
+                    {% endif %}
+
+                  {% if casa.stanzaTripla > 0 %}
+                  <li class="d-flex py-1"><span class="icon icon-xs icon-primary"><i
+                    class="fas fa-check-circle mr-2"></i> </span><span>Stanze triple {{casa.stanzaTripla}}</span></li>
+                    {% else %}
+                    {% endif %}
+
+                  <li class="d-flex py-1"><span class="icon icon-xs icon-primary"><i
+                    class="fas fa-check-circle mr-2"></i> </span><span>Bagni {{casa.bagni}}</span></li>
+
+                  <li class="d-flex py-1"><span class="icon icon-xs icon-primary"><i
+                    class="fas fa-check-circle mr-2"></i> </span><span>Inquilini presenti {{casa.coinquiliniPresenti}}</span></li>
+
+                    <li class="d-flex py-1"><span class="icon icon-xs icon-primary"><i
+                      class="fas fa-check-circle mr-2"></i> </span><span>Balconi {{casa.balconi}}</span></li>
+
+
+                  {% if casa.ascensore == "True" or casa.ascensore == "si" %}
+                  <li class="d-flex py-1"><span class="icon icon-xs icon-primary"><i
+                    class="fas fa-check-circle mr-2"></i> </span><span>Ascensore</span></li>
+                  {% else %}
+                  {% endif %}
+
+                  {% if casa.animali == "True" or casa.animali == "si"%}
+                  <li class="d-flex py-1"><span class="icon icon-xs icon-primary"><i
+                    class="fas fa-check-circle mr-2"></i> </span><span>Accesso ad animali</span></li>
+                  {% else %}
+                  {% endif %}
+
+                  {% if casa.ariaCond == "True" or casa.ariaCond == "si"%}
+                  <li class="d-flex py-1"><span class="icon icon-xs icon-primary"><i
+                    class="fas fa-check-circle mr-2"></i> </span><span>Aria Condizionata</span></li>
+                  {% else %}
+                  {% endif %}
+                </ul>
+            </div>
+            <!-- end basic -->
+
+            <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+                 aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                <div class="modal-content">
+                  <div class="modal-body p-0">
+                    <div class="card shadow-md border-0">
+                      <div class="card-body position-relative">
+                        <button type="button" class="close mb-2" data-dismiss="modal" aria-label="Close"><span
+                          aria-hidden="true">×</span></button>
+                        <form class="mt-3">
+                          <div class="form-group">
+                            <div class="input-group mb-4">
+                              <div class="input-group-prepend"><span class="input-group-text"><i
+                                class="far fa-user"></i></span></div>
+                              <input class="form-control" placeholder="Name" type="text" required=""></div>
+                          </div>
+                          <div class="form-group">
+                            <div class="input-group mb-4">
+                              <div class="input-group-prepend"><span class="input-group-text"><i
+                                class="far fa-envelope"></i></span></div>
+                              <input class="form-control" placeholder="Email" type="email" required=""></div>
+                          </div>
+                          <div class="form-group"><textarea class="form-control" placeholder="Write message"
+                                                            id="message-2" rows="4" required=""></textarea></div>
+                          <div class="text-center">
+                            <button type="submit" class="btn btn-block btn-primary mt-4">Send Message</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End of Modal Content --></div>
+          <!-- <div class="card shadow-sm border-soft mt-4 p-3"><h5 class="font-weight-normal">Ti interessa ?</h5>
+            <form class="mt-3">
+              <div class="form-group">
+                <div class="input-group mb-4">
+                  <div class="input-group-prepend"><span class="input-group-text"><i class="far fa-user"></i></span>
+                  </div>
+                  <input class="form-control" placeholder="Nome" type="text" required=""></div>
+              </div>
+              <div class="form-group">
+                <div class="input-group mb-4">
+                  <div class="input-group-prepend"><span class="input-group-text"><i class="far fa-envelope"></i></span>
+                  </div>
+                  <input class="form-control" placeholder="Email" type="email" required=""></div>
+              </div>
+              <div class="form-group">
+                <div class="input-group mb-4">
+                  <div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-mobile"></i></span>
+                  </div>
+                  <input class="form-control" placeholder="Phone" type="number" required=""></div>
+              </div>
+              <div class="form-group"><textarea class="form-control" placeholder="Scrivi un messaggio (attiveremo presto il servizio)"
+                                                id="message" rows="4" required=""></textarea></div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-block btn-primary mt-4">Invia </button>
+              </div>
+            </form>
+          </div> -->
+        </aside>
+      </div>
+    </div>
+  </div>
+
+
+<script src="{% static '/css/assets/web/assets/jquery/jquery.min.js' %}"></script>
+<script src="{% static '/css/assets/popper/popper.min.js' %}"></script>
+<script src="{% static '/css/assets/tether/tether.min.js' %}"></script>
+<script src="{% static '/css/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static '/css/assets/smoothscroll/smooth-scroll.js' %}"></script>
+<script src="{% static '/css/assets/bootstrapcarouselswipe/bootstrap-carousel-swipe.js' %}"></script>
+<script src="{% static '/css/assets/vimeoplayer/jquery.mb.vimeo_player.js' %}"></script>
+<script src="{% static '/css/assets/masonry/masonry.pkgd.min.js' %}"></script>
+<script src="{% static '/css/assets/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static '/css/assets/theme/js/script.js' %}"></script>
+<script src="{% static '/css/assets/gallery/player.min.js' %}"></script>
+<script src="{% static '/css/assets/gallery/script.js' %}"></script>
+<script src="{% static '/css/assets/slidervideo/script.js' %}"></script>
+
+
+{% endblock content %}

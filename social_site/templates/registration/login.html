@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{%  load crispy_forms_tags %}
+{% load static %}
+
+{% block head_title %}{{ block.super }} - login {% endblock head_title %}
+
+{% block headcontent %}
+{% endblock headcontent %}
+
+{% block content %}
+<div class="container text-center">
+  <br><br>
+  {% if request.user.is_authenticated  %}
+  <h3>Ciao {{user.first_name}} sei già registrato</h3>
+  {% else %}
+  <h2 class="well">Effettua il login</h2>
+  <div class="row justify-content-center">
+    <div class="row">
+        <form method="post" novalidate>
+              {% csrf_token %}
+              {% include 'partials/_flash_messages.html' %}
+              <div class="col-lr-8 form-group">
+                {{ form.username | as_crispy_field }}
+              </div>
+              <div class="col-lr-8 form-group">
+                {{ form.password | as_crispy_field }}
+              </div>
+
+              <div class="form-row">
+                  <a href="{% url 'password_reset' %}">Password dimenticata </a> &nbsp/&nbsp
+                  <a href="{% url 'registrazione_view' %}"> Registrati</a>
+              </div>
+              <a href="{% url 'registrazione_view_owner' %}"> Possiedi un immobile ?</a>
+              <hr>
+              <button type="submit" class="btn btn-lr btn-info center-block">Login</button>
+              <input type="hidden" name="next" value="{{ next }}">
+				</form>
+	     </div>
+  </div>
+  {% endif %}
+</div>
+
+{% endblock content %}

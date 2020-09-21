@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	{% load static %}
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '351694849326894');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=351694849326894&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168745208-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-168745208-1');
+	</script>
+	<!--mail chimb-->
+<script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/bbfaaded641d5c104dcd1c533/951e1d31baf6f22f45a9085c8.js");</script>
+
+	<!-- Hotjar Tracking Code for www.cooabit.com -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1865962,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+<script src="{% static 'icone_profilo.js' %}" crossorigin="anonymous"></script>
+<link href="{% static '/css/fontawesome-free-5.13.0-web/css/all.css' %}" rel="stylesheet">
+	<title>{% block head_title %}Cooabit{% endblock head_title %}</title>
+	{% block headcontent %}
+
+	{% endblock headcontent %}
+	<style type="text/css">
+		html, body, footer.container{
+			height: 100%;
+
+		}
+		footer.footer{
+			padding-top:4rem;
+			padding-bottom:4rem;
+			margin-top: 15%;
+			margin-bottom: 0%
+
+		}
+
+	</style>
+
+	{% block css %}{% endblock css%}
+
+	<!-- Hotjar Tracking Code for www.cooabit.com -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1865962,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+
+</head>
+
+<body>
+
+
+
+	<!--  INIZIO MENÙ -->
+<div class="container " style="height:auto;" >
+
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-white">
+		<a class="navbar-brand" href="/">
+			 <img src="{% static 'cooabit.png' %}" width="156" height="50" alt="" loading="lazy">
+		</a>
+
+		{% if request.user.email == "mattialavecchia@gmail.com" or request.user.email == "sergio.gualtieri@gmail.com" or request.user.email == "mattia.lavecchia@gmail.com" or    request.user.email == "admin@admin.it" or request.user.email == "admin1@admin1.it" %}
+			<!-- <ul class="navbar-nav ml-auto ">
+				<li class="nav-item active pt-2 ">
+				 <a class="nav-link" href="{% url 'manda_email' %}"><h5>Email</h5></a>
+				</li>
+			</ul> -->
+			<!-- <ul class="navbar-nav ml-auto ">
+				<li class="nav-item active pt-2 ">
+				 <a class="nav-link" href="/messages"><h5>Chat</h5></a>
+				</li>
+			</ul> -->
+		{% endif %}
+
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	     <span class="navbar-toggler-icon"></span>
+	   </button>
+
+
+{% if request.user.is_authenticated  %}
+	{% if request.user.profile.owner == "profile"  %}
+	<div class="collapse navbar-collapse " id="navbarSupportedContent">
+	    <ul class="navbar-nav ml-auto ">
+	<!-- <li class="nav-item active pt-2 ">
+	 <a class="nav-link" href="{% url 'about_view'  %}"><h5>About</h5></a>
+	</li> -->
+	<li class="nav-item active pt-2 ">
+ 	 <a class="nav-link" href="{% url 'index' pk=request.user.pk %}"><h5>Match</h5></a>
+ 	</li>
+  <li class="nav-item active pt-2">
+ 	 <a class="nav-link" href="{% url 'home_list' pk=request.user.pk %}"><h5>Like</h5></a>
+  </li>
+  <li class="nav-item active dropdown pt-2 pr-5">
+ 	 <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+ 		 <h5>{{ request.user.first_name }} {{ request.user.last_name }}</h5>
+
+ 	 </a>
+
+ 	 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuOffset">
+ 		 <a class="dropdown-item" href="{% url 'user_profile' pk=request.user.pk %}">Profilo</a>
+ 		 <a class="dropdown-item" href="{% url 'modify_profile' owner=request.user.profile.owner %}">Modifica Profilo</a>
+ 		 <a class="dropdown-item" href="{% url 'password_change' %}">Modifica Password</a>
+ 		 <div class="dropdown-divider"></div>
+ 		 <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+ 	 </div>
+  </li>
+
+</ul>
+</div>
+  {% else %}
+	<div class="collapse navbar-collapse " id="navbarSupportedContent">
+			<ul class="navbar-nav ml-auto ">
+	<!-- <li class="nav-item active pt-2 ">
+	 <a class="nav-link" href="{% url 'about_view'  %}"><h5>About</h5></a>
+	</li> -->
+	<li class="nav-item pt-2 ">
+		<a class="nav-link" href="{% url 'crea_casa' pk=request.user.pk %}"><h5>Aggiungi casa</h5></a>
+		<!-- <a class="nav-link" href="#"><h5>Aggiungi casa</h5><span class="sr-only">(current)</span></a> -->
+	 </li>
+	<li class="nav-item active pt-2">
+		<a class="nav-link" href="{% url 'home_list_owner' pk=request.user.pk %}"><h5>Le mie case</h5></a>
+		<!-- <a class="nav-link" href="#"><h5>Le mie case</h5><span class="sr-only">(current)</span></a> -->
+	</li>
+	<li class="nav-item dropdown pt-2 pr-5">
+		<a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<h5>{{ request.user.first_name }} {{ request.user.last_name }}</h5>
+		</a>
+		<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuOffset">
+			<a class="dropdown-item" href="{% url 'user_profile' pk=request.user.pk %}">Profilo</a>
+			<a class="dropdown-item" href="{% url 'modify_profile' owner=request.user.profilep.owner %}">Modify profile</a>
+			<a class="dropdown-item" href="{% url 'password_change' %}">Cambia Password</a>
+			<div class="dropdown-divider"></div>
+			<a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+		</div>
+	</li>
+</ul>
+</div>
+	 {% endif %}
+{% else %}
+<div class="collapse navbar-collapse " id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto  ">
+			<!-- <li class="nav-item active ">
+			 <h5><a class="nav-link" href="{% url 'about_view'  %}">About</a></h5>
+			</li> -->
+			<li class="nav-item active  ">
+				<h5><a class="nav-link" href="{% url 'login' %}">Log in</a></h5>
+			</li>
+			   <li class="nav-item active  ">
+			     <h5><a class="nav-link" href="{% url 'registrazione_view' %}">Registrati</a></h5>
+			   </li>
+				 <li class="nav-item active  ">
+					 <!-- <h5 class="text-primary"><a class="nav-link active" href="{% url 'registrazione_view_owner' %}">Proprietario</a></h5> -->
+					 <h5 class="text-primary"><a class="nav-link active" href="{% url 'under_costruction_p_view' %}">Proprietario</a></h5>
+				 </li>
+
+				  <li class="nav-item  ">
+				 		 <h5><a class="nav-link" href="{% url 'login' %}"></a></h5>
+				 	 </li>
+    </ul>
+
+</div>
+{% endif %}
+
+
+
+</div>
+</nav>
+
+	<!--  FINE MENÙ -->
+
+
+{% block content %} {% endblock content %}
+
+{% block extra_js %} {% endblock extra_js %}
+
+<!-- Footer -->
+<footer class="footer section bg-light">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+				<ul class="list-inline mb-2">
+					<li class="list-inline-item">
+					<a href="{% url 'about_view'  %}">About</a>
+					<li class="list-inline-item">&sdot;</li>
+					<li class="list-inline-item">
+						<a href="#">Contact</a>
+					</li>
+					<li class="list-inline-item">&sdot;</li>
+					<li class="list-inline-item">
+						<a href="https://cooabit.com/accounts/condition/">Terms of Use</a>
+					</li>
+					<li class="list-inline-item">&sdot;</li>
+					<li class="list-inline-item">
+						<a href="https://cooabit.com/accounts/privacy/">Privacy Policy</a>
+					</li>
+				</ul>
+				<p class="text-muted small mb-4 mb-lg-0">&copy; Cooabit 2020 <3 . All Rights Reserved.</p>
+			</div>
+			<div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+				<ul class="list-inline mb-0">
+					<li class="list-inline-item mr-3">
+						<a href="https://www.facebook.com/cooabit/">
+							<i class="fab fa-facebook fa-2x fa-fw"></i>
+						</a>
+					</li>
+					<li class="list-inline-item mr-3">
+						<a href="#">
+							<i class="fab fa-twitter-square fa-2x fa-fw"></i>
+						</a>
+					</li>
+					<li class="list-inline-item">
+						<a href="#">
+							<i class="fab fa-instagram fa-2x fa-fw"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!-- Facebook Pixel Code -->
+
+<!-- End Facebook Pixel Code -->
+</body>
+</html>

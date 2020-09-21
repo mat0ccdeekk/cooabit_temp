@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%  load crispy_forms_tags %}
+
+{% block head_title %}{{ block.super }} - registrazione {% endblock head_title %}
+{% block headcontent %}
+{% endblock headcontent %}
+
+
+{% block content %}
+
+  <div class="container text-center">
+  <br><br>
+  {% if request.user.is_authenticated  %}
+  <h3>Congraturazioni {{user.first_name}} ora fai parte di Cooabit.</h3>
+  {% else %}
+  <h2 class="well px-4">Registrati qui</h2>
+  <br>
+
+      <form method="post" novalidate>
+        {% csrf_token %}
+        	<div class="form-row d-flex justify-content-center ">
+            <div class="form-group col-md-3 mb-0 ">
+              {{ form.first_name|as_crispy_field }}
+            </div>
+        		<div class="form-group col-md-3 mb-0">
+              {{ form.last_name|as_crispy_field }}
+						</div>
+					</div>
+
+          <div class="form-row d-flex justify-content-center">
+            <div class="form-group  col-md-3 mb-0">
+              {{ formProfile.city|as_crispy_field }}
+            </div>
+            <div class="form-group  col-md-3 mb-0">
+              {{ formProfile.occupation|as_crispy_field }}
+            </div>
+              </div>
+<div class="form-row d-flex justify-content-center">
+          {% include 'partials/_flash_messages.html' %}
+          <div class="form-group col-md-6">
+            {{ form.email|as_crispy_field }}
+          </div>
+        </div>
+          <div class="form-row d-flex justify-content-center">
+          <div class="form-group col-md-3">
+            {{ form.password1|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-3">
+            {{ form.password2|as_crispy_field }}
+          </div>
+          </div>
+          <div class="form-group">
+            <input type="hidden" id="formProfile.age"  name="age" value="2000-01-01">
+          </div>
+
+        <!-- <div class="form-row d-flex justify-content-center">
+          <div class="form-group col-md-3 mb-0">
+            <label>Data di nascita</label>
+            {{ formProfile.age | as_crispy_field }}
+          </div>
+          <div class="form-group  col-md-3 mb-0" >
+            <label >Genere</label>
+             {{ formProfile.gender|as_crispy_field }}
+          </div>
+        </div> -->
+
+        <a href="javascript:;"
+           onClick="window.open('{% url 'condition_view' %}', 'titolo', 'width=600, height=600, resizable, status, scrollbars=1, location');">
+           <label for="conditionID">Condizioni d'uso e privacy</label>
+        </a><input type="checkbox" name="condition" value="condition"  id="conditionID" required>
+        <br>
+          <a href="{% url 'login' %}" id="login">
+           <label for="login">Effettua il Login</label>
+        </a> &nbsp &nbsp
+        <!-- <a href="javascript:;"
+           onClick="window.open('{% url 'privacy_view' %}', 'titolo', 'width=600, height=600, resizable, status, scrollbars=1, location');">
+           <label for="privacyID">Condizioni sulla privacy</label>
+        </a><input type="checkbox" name="privacy" value="privacy" id="privacyID" required>
+          <hr> -->
+        <div>
+          <button type="submit" class="btn btn-lg btn-info center-block">Registrati</button>
+        </div>
+			</form>
+    </div>
+  </div>
+  {% endif %}
+</div>
+</div>
+
+{% endblock content %}

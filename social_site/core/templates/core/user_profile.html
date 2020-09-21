@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head_title %}{{ block.super }} - {{ user.first_name }} {{ user.last_name }} {% endblock head_title %}
+
+
+{% block headcontent %}
+ <link rel="stylesheet" type="text/css" href="{% static '/css/Profiloutente.css' %}">
+ <link href="{% static 'css/fontawesome-free-5.13.0-web/css/all.css' %}" rel="stylesheet">
+{% endblock headcontent %}
+
+{% block content %}
+<div class="row">
+  {% if request.user.is_authenticated  %}
+    {% if request.user.profile.owner == "profile"  %}
+
+<div class="w-100 p-5" >
+</div>
+
+<div class="container">
+  <div class="row">
+    <!--COLONNA SINISTRA-->
+    <div class="col-sm-4">
+      <div class="card" style="width: 20rem;">
+        <img class="card-img-top" src="{{ user.profile.photo.url }}" alt="Card image cap" id="img1">
+        <div class="card-body">
+          <div class="container d-flex justify-content-center ">
+            <h5 class="card-title">
+              {{ user.first_name }} {{ user.last_name }}
+              {% if user.profile.gender == "uomo" %}<i class="fas fa-mars"></i>
+              {% else %} <i class="fas fa-venus"></i>
+              {% endif %}
+            </h5>
+            <!--  <button type="button" class="btn btn-primary btn-sm  "><i class="far fa-edit fa-x"></i></button>-->
+          </div>
+          {% if user.profile.maxima != None %} <p class="card-text">si{{ user.profile.maxima }}</p> {% endif %}
+        </div>
+              <ul class="list-group list-group-flush ">
+                <li class="list-group-item text-center"><i class="fas fa-city fas-2x"></i> {{  user.profile.city }}</li>
+                <!-- <li class="list-group-item text-center"><i class="fas fa-birthday-cake fas-2x"></i> {{  user.profile.age }}</li> -->
+                <li class="list-group-item text-center"> <i class="fas fa-briefcase fas-2x"></i> {{  user.profile.occupation }}</li>
+                {% if user.profile.pet != None %}
+                  <li class="list-group-item text-center"> <i class="fas fa-paw fas-2x"></i>
+                    {% if user.profile.pet == "s" %}  Pet si {% else %} Animali no {% endif %}
+                  </li>
+                {% endif %}
+                <li class="list-group-item text-center"> <i class="fas fa-star fas-2x"></i>  8</li>
+              </ul>
+              <div class=" card-body ">
+                <div class="container d-flex justify-content-between">
+                  <button type="button" class="btn btn-primary btn-lg my-2  "><i class="far fa-comments fas-3x"> </i></button>
+                  <button type="button" class="btn btn-primary btn-lg my-2  "><i class="far fa-star fas-3x"> </i> </button>
+                  <button type="button" class="btn btn-primary btn-lg my-2 "><i class="far fa-heart fas-3x"> </i>  </button>
+                </div>
+              </div>
+        </div>
+      </div>
+    <!--FINI COLONNA-->
+
+    <!--INIZIO PARTE CENTRALE-->
+
+    <div class="col-10 col-sm-8">
+      <div class="container pt-5" >
+        {% if user.profile.aboutMe != None %}
+          <p>
+            {{  user.profile.aboutMe }}
+          </p>
+          {% else %}
+          <h3>Scrivi di te, modifica la tua bio</h3>
+        {% endif %}
+      </div>
+
+      <!-- <div class="container-fluid" >
+        <hr>
+        <h4>Review</h4>
+        <p id="descrizione">
+          Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e
+        </p>
+      </div> -->
+    </div>
+    <!--FINE PARTE CENTRALE-->
+
+  </div>
+</div>
+    {% else %}
+    <div class="w-100 p-5" >
+    </div>
+
+      <div class="container">
+        <div class="row">
+        <!--COLONNA SINISTRA-->
+          <div class="col-10 col-sm-10 col-lg-4 ">
+            <div class="card" style="width: 20rem;">
+                  <ul class="list-group list-group-flush ">
+                    <li class="list-group-item text-center">emil : {{user.email}}</li>
+                    {% if user.profileP.mobile != "n" %}
+                      <li class="list-group-item text-center">mobile : {{user.profilep.mobile}}</li>
+                    {% else %}
+                    {% endif %}
+                    {% if user.profileP.agency != "n" %}
+                      <li class="list-group-item text-center">Agenzia : {{user.profilep.agency}}</li>
+                      {% else %}
+                    {% endif %}
+                  </ul>
+            </div>
+          </div>
+
+      </div>
+    </div>
+    {% endif %}
+
+  {% else %}
+      <h3 align="center"> <a href="{% url 'login' %}">Effetua il login</a></h3>
+{% endif %}
+</div>
+
+
+
+
+{% endblock content %}

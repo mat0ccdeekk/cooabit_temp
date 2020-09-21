@@ -1,0 +1,15 @@
+{% autoescape off%}
+
+Ciao {{user.first_name}} {{user.last_name}} grazie per esserti registrato a Cooabit.
+Per attivare il tuo account, clicca il seguente link :
+
+http://{{domain}}{% url 'activate' uidb64=uid token=token %}
+
+username : {{user.email}}
+
+Altrimenti, copia e incolla il link nella barra degli indirizzi del tuo browser.
+
+Se non hai effettuato alcuna registrazione al sito cooabit.com , puoi ignorare questa email.
+Grazie www.cooabit.com
+
+{% endautoescape %}

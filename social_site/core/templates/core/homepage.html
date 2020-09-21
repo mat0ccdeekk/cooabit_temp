@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block headcontent %}
+<link href="{% static 'css/homepage.css' %}" rel="stylesheet">
+
+
+
+<!-- Bootstrap core CSS -->
+<link href="{% static 'landing_page/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+<!-- Custom fonts for this template -->
+<link href="{% static 'landing_page/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+<link href="{% static 'landing_page/vendor/simple-line-icons/css/simple-line-icons.css' %}" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+<!-- Custom styles for this template -->
+<link href="{% static 'landing_page/css/landing-page.css' %}" rel="stylesheet">
+
+{% endblock headcontent %}
+
+{% block content %}
+
+<div class="firstInfo">
+  <div class="intro">
+<!--
+<div class="container pr-4">
+<h1> <span > La ricerca di una </span> <span style="color:black;">stanza, </span> </h1>
+<h1>in modo <span style="color:green;">semplice</span>, <span style="color:blue;">sicuro</span> e <span style="color:yellow;">divertente. </span></h1>
+</div> -->
+
+    </div>
+      <!-- INIZIO MOTORE-->
+      <div class="box">
+        {% if request.user.is_authenticated  %}
+        <form action="{% url 'search_view' %}">
+          <div class="input-group mb-3" >
+            <input name="q1" type="search" class="form-control " placeholder="Inserisci qui la città." aria-label="Recipient's username" aria-describedby="button-addon2" value="Milano">
+            &nbsp
+            <input name="q2" type="hidden" class="form-control " placeholder="Area" aria-label="Recipient's username" aria-describedby="button-addon2" value="Tutte">
+            <button type="submit" class="btn btn-primary" id="button-addon2"  type="submit">Cerca</button>
+            </div>
+          </div>
+        </form>
+        {% else %}
+        <form action="{% url 'under_costruction_view' %}">
+          <!--<form action="{% url 'search_view' %}">-->
+          <div class="input-group mb-3" >
+            <input name="q1" type="search" class="form-control " placeholder="Inserisci qui la città." aria-label="Recipient's username" aria-describedby="button-addon2"  >
+            &nbsp
+            <!-- <input name="q2" type="search" class="form-control " placeholder="Scegli la zona che ti interessa." aria-label="Recipient's username" aria-describedby="button-addon2" > -->
+            <div class="input-group-append">
+            &nbsp
+            <button class="btn btn-primary " type="submit" id="button-addon2">Cerca</button>
+            </div>
+          </div>
+        </form>
+        {% endif %}
+        </div>
+
+        {% if request.user.is_authenticated  %}
+        <!--  CONTENUTI PER UTENTE REGISTRATO -->
+        {% else %}
+         <!-- CONTENUTI PER UTENTE NON REGISTRATO -->
+
+<div class="container">
+
+<div class="contain-max">
+
+  <div class="inbl onethree text-center "><div class="image">
+<img class="img1" alt="" data-src="https://d2guulkeunn7d8.cloudfront.net/assets/homepage/img-touch-app-e52e78417435efa1d346b5969b6071b50b5dfa2d52efcbeff771b718023584d9.jpg" src="https://img.freepik.com/free-vector/house-searching-concept-landing-page_23-2148298496.jpg?size=626&ext=jpg">
+</div>
+<h3>La stanza per te</h3>
+<p>
+Cerca la soluzione adatta a te, metti like sulla casa che ti piace, affineremo sempre di più la ricerca in base ai tuoi gusti.
+</p></div>
+
+<div class="inbl onethree text-center mx-5"><div class="image">
+<img class="img2" alt="" data-src="https://d2guulkeunn7d8.cloudfront.net/assets/homepage/img-shop-car-ff4b655800f3697555171e3743aa33eb4aa6ebd38b0ec04094972a9a30d1cf11.jpg" src="https://image.freepik.com/vettori-gratuito/illustrazione-di-concetto-del-mondo-online_114360-2212.jpg">
+</div>
+<h3>Chatta con i coinquilini</h3>
+<p>
+I tuoi like ti daranno la possibilità di comunicare con persone come te, interessata a condividere una casa.</p>
+</div>
+<div class="inbl onethree text-center "><div class="image">
+<img class="img3" alt="" data-src="https://d2guulkeunn7d8.cloudfront.net/assets/homepage/img-bag-0e8d6703d4ed9bd42299df8b95a2cc13bc676199a2bbfc8475aa97ec0667f588.jpg" src="https://image.freepik.com/free-vector/illustration-refer-friend-concept-with-characters_52683-24294.jpg">
+</div>
+<h3>Fate una proposta</h3>
+<p>
+Vi siete confrontati, la casa piace a tutti, fate una proposta al proprietario e diventate coinquilini.
+</p>
+        </div>
+      </div>
+
+     </div>
+
+</div>
+
+        {% endif %}
+
+</div>
+</div>
+{% if request.user.is_authenticated  %}
+<!--  CONTENUTI PER UTENTE REGISTRATO -->
+{% else %}
+
+<!--  CONTENUTI PER UTENTE NON REGISTRATO -->
+
+<div class="showcase">
+
+    <div class="row ">
+
+      <div class="col-sm-10  col-lg-6 order-lg-2 text-white showcase-img">
+        <div class="imgInfo1">
+
+        <img src="https://image.freepik.com/free-vector/landing-page-house-searching-concept_52683-26417.jpg" class="img-fluid " alt="Responsive image">
+            </div>
+         </div>
+
+      <div class="col-sm-10 col-lg-6 order-lg-1 my-auto showcase-text">
+
+        <h2>Ricerca</h2>
+        <p class="lead ">Semplifichiamo la ricerca proponendoti le soluzioni più adatte a te, evitando liste infinite, prezzi nascosti e stanze non più disponibili.
+         </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-10 col-lg-6 text-white showcase-img">
+        <div class="imgInfo1">
+    <img src="https://image.freepik.com/free-vector/young-people-holding-blank-banner_52683-19652.jpg" class="img-fluid " alt="Responsive image">
+      </div>
+      </div>
+      <div class="col-12 col-lg-6 showcase-text">
+        <h2>Condivisione</h2>
+        <p class="lead mb-0">I coinquilini fanno la differenza, ti aiuteremo a trovare quelli che fanno per te.
+      La nostra piattaforma unisce profile compatibili che hanno più possibilità di avere un esperienza di co living da non dimenticare.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-lg-6 order-lg-2 text-white showcase-img" >
+        <div class="imgInfo1">
+
+        <img src="https://image.freepik.com/free-vector/connected-concept-illustration_114360-482.jpg" class="img-fluid " alt="Responsive image">
+</div>
+      </div>
+      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+        <h2>Comunicazione</h2>
+        <p class="lead mb-0">Puoi interagire con i tuoi coinquilini prima di entrare in casa,
+        attraverso la nostra chat, conoscerli magari prendere un caffè assieme.
+     </p>
+      </div>
+    </div>
+
+</div>
+
+</div>
+
+
+{% endif %}
+
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+{% endblock content %}

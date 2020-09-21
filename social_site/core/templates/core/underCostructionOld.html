@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    {% load static %}
+  <script src="{% static 'icone_profilo.js' %}" crossorigin="anonymous"></script>
+  <link href="{% static 'css/Footer.css' %}" rel="stylesheet">
+  <link href="{% static 'static_site/css/fontawesome-free-5.13.0-web/css/all.css' %}" rel="stylesheet">
+  <script>
+      (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:1865962,hjsv:6};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>{% block head_title %}Cooabit under costruction{% endblock head_title %}</title>
+    {% block headcontent %}
+
+    {% endblock headcontent %}
+
+
+    <meta charset="utf-8">
+
+  </head>
+  <body>
+<div class="underCost">
+  <div class="d-flex justify-content-center ">
+    <div class="jumbotron pt-5">
+      <img class="sc-iVOTot dLjput"  alt="Stay Tuned — Coming soon to your area" src="https://cdn.doordash.com/static/img/consumer/home/Stay-Tuned.svg">
+      <p class="pt-4">Siamo quasi pronti, lascia qui la tua email cosi possiamo contattarti!</p>
+
+      <!-- inserimento email per newsletter -->
+      <div class="container d-flex justify-content-between">
+        <div class="input-group ">
+          <form method="POST">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-sm-6 form-group">
+                <input type="text" id="sub_form.nome" name="nome" placeholder="Nome" class="form-control" required>
+              </div>
+              <div class="col-sm-6 form-group">
+                <input type="text" id="sub_form.cognome" name="cognome" placeholder="Cognome" class="form-control" required>
+              </div>
+            </div>
+
+              <div class="form-group">
+                <input type="email" id="sub_form.email" name="email" placeholder="Email" class="form-control" required>
+              </div>
+
+            <div class="container d-flex justify-content-center">
+            <button type="submit" class="btn btn-lg btn-info center-block mt-3">invia</button>
+            </div>
+          </form>
+       </div>
+      </div>
+  </div>
+</div>
+</div>
+    <style media="screen">
+    @media only screen and (min-width: 500px) {
+      .underCost{
+
+        margin-top: 300px;
+
+
+      }
+      @media only screen and (min-width: 800px) {
+        .underCost{
+
+          margin-top: 300px;
+
+
+        }
+@media only screen and (min-width: 1200px) {
+  .underCost{
+    display: block;
+    margin-top: 200px;
+ margin-left: auto;
+ margin-right: auto;
+ width: auto;
+  }
+}
+</style>
+
+  </body>
+</html>

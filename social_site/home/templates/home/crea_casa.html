@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%  load crispy_forms_tags %}
+
+{% block head_title %}{{ block.super }} - registrazione {% endblock head_title %}
+{% block headcontent %}
+<!-- <link rel="stylesheet" href="{% static '/css/dropimg.css' %}"> -->
+{% endblock headcontent %}
+
+
+{% block content %}
+  <div class="row">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-lg-14">
+   <div class="container">
+     <br>
+     <br>
+    <h3 class="well">Registra qui il tuo immobile</h3>
+    <br>
+	<div class="col-lg-14 well">
+	<div class="row">
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <!-- dove si trova -->
+          <div class="form-row">
+            <div class="form-group col-10 col-md-4 ">
+              {{ casa.citta|as_crispy_field }}
+            </div>
+        		<div class="form-group col-10 col-md-4">
+              {{ casa.zona|as_crispy_field }}
+						</div>
+            <div class="form-group col-10 col-md-4">
+              {{ casa.via|as_crispy_field }}
+            </div>
+					</div>
+
+            <div class="form-row">
+              <div class="form-group col-10 col-md-4">
+                {{ casa.prezzo | as_crispy_field }}
+              </div>
+              <div class="form-group col-10 col-md-4">
+                {{ casa.prezzoCondominio | as_crispy_field }}
+              </div>
+              <div class="form-group col-10 col-md-4">
+                {{ casa.m_quadri | as_crispy_field }}
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-10 col-md-4">
+                {{ casa.tipo_immobile | as_crispy_field }}
+              </div>
+              <div class="form-group col-10 col-md-4">
+                {{ casa.piano | as_crispy_field }}
+              </div>
+              <div class="form-group col-10 col-md-4">
+                {{ casa.coinquiliniPresenti | as_crispy_field }}
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-6 col-md-3">
+                {{ casa.postiTotali | as_crispy_field }}
+              </div>
+              <div class="form-group col-6 col-md-3">
+                {{ casa.stanzaDoppia | as_crispy_field }}
+              </div>
+              <div class="form-group col-6 col-md-3">
+                {{ casa.stanzaSingola | as_crispy_field }}
+              </div>
+              <div class="form-group col-6 col-md-3">
+                {{ casa.stanzaTripla | as_crispy_field }}
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-10 col-md-4">
+                {{ casa.mesiCaparra | as_crispy_field }}
+              </div>
+              <div class="form-group col-10 col-md-4">
+                {{ casa.bagni | as_crispy_field }}
+              </div>
+              <div class="form-group col-10 col-md-4">
+                {{ casa.balconi | as_crispy_field }}
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-2">
+                {{ casa.studenti | as_crispy_field }}
+              </div>
+              <div class="form-group col-md-2">
+                {{ casa.ascensore | as_crispy_field }}
+              </div>
+              <div class="form-group col-md-2">
+                {{ casa.wifi | as_crispy_field }}
+              </div>
+              <div class="form-group col-md-2">
+                {{ casa.animali | as_crispy_field }}
+              </div>
+              <div class="form-group col-md-2">
+                {{ casa.ariaCond | as_crispy_field }}
+              </div>
+            </div>
+
+
+
+            <!-- <div id="drop-region">
+            	<div class="drop-message">
+                <p>Trascina qui le immagini del tuo immobile.</p>
+            	</div>
+            	<div id="image-preview"></div>
+            </div> -->
+
+
+            <div class="form-row">
+              <div class="form-group col-md-2">
+                {{ casa.foto1 | as_crispy_field }}
+              </div>
+              <div class="form-group col-md-2">
+                {{ casa.foto2 | as_crispy_field }}
+              </div>
+              <div class="form-group col-md-2">
+                {{ casa.foto3 | as_crispy_field }}
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-2">
+                {{ casa.foto4 | as_crispy_field }}
+              </div>
+              <div class="form-group col-md-2">
+                {{ casa.foto5 | as_crispy_field }}
+              </div>
+              <div class="form-group col-md-2">
+                {{ casa.foto6 | as_crispy_field }}
+              </div>
+            </div>
+<!--
+            <div class="form-row">
+              <div class="form-group col-md-2">
+                {{ casa.foto7 | as_crispy_field }}
+              </div>
+              <div class="form-group col-md-2">
+                {{ casa.foto8 | as_crispy_field }}
+              </div>
+              <div class="form-group col-md-2">
+                {{ casa.foto9 | as_crispy_field }}
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-2">
+                {{ casa.foto10 | as_crispy_field }}
+              </div>
+              <div class="form-group col-md-2">
+                {{ casa.foto11 | as_crispy_field }}
+              </div>
+              <div class="form-group col-md-2">
+                {{ casa.foto12 | as_crispy_field }}
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-2">
+                {{ casa.foto13 | as_crispy_field }}
+              </div>
+              <div class="form-group col-md-2">
+                {{ casa.foto14 | as_crispy_field }}
+              </div>
+              <div class="form-group col-md-2">
+                {{ casa.foto15 | as_crispy_field }}
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-10">
+                {{ casa.descrizione | as_crispy_field }}
+              </div>
+            </div>
+-->
+            <div class="form-group">
+              <input type="hidden" id="id_owner" name="owner" value="{{request.user.pk}}">
+            </div>
+
+              <hr>
+            <div>
+              <button type="submit" class="btn btn-lg btn-info center-block">Pubblica il tuo annuncio</button>
+            </div>
+				</form>
+
+		</div>
+  </div>
+</div>
+	</div>
+	</div>
+<!-- <script type="text/javascript" src="{% static 'js/dropimg.js' %}"></script> -->
+
+
+{% endblock content %}

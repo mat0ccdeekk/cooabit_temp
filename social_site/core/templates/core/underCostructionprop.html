@@ -1,0 +1,115 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block headcontent %}
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1865962,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+<link href="{% static 'css/Onbording.css' %}" rel="stylesheet">
+
+
+<!-- Bootstrap core CSS -->
+<link href="{% static 'landing_page/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+<!-- Custom fonts for this template -->
+<!-- <link href="{% static 'landing_page/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+<link href="{% static 'landing_page/vendor/simple-line-icons/css/simple-line-icons.css' %}" rel="stylesheet" type="text/css"> -->
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+<!-- Custom styles for this template -->
+<link href="{% static 'landing_page/css/landing-page.css' %}" rel="stylesheet">
+
+{% endblock headcontent %}
+
+{% block content %}
+
+<div class="firstInfo">
+  <div class="intro">
+<!-- <div class="container pr-4">
+  <h1> <span > La ricerca di una </span> <span style="color:black;">stanza, </span> </h1>
+<h1>in modo <span style="color:green;">semplice</span>, <span style="color:blue;">sicuro</span> e <span style="color:yellow;">divertente. </span></h1>
+</div> -->
+    </div>
+
+
+<!-- INIZIO MOTORE-->
+</div>
+<!--  CONTENUTI PER UTENTE NON REGISTRATO -->
+<h1 class="text-center pt-3">Come funziona cooabit:</h1>
+<div class="showcase">
+
+    <div class="row">
+
+      <div class="col-sm-10  col-lg-6 order-lg-2 text-white showcase-img">
+        <div class="imgInfo1">
+
+        <img src="https://image.freepik.com/free-vector/couple-buying-home-property-with-bank-credit-vector-illustration_74855-4776.jpg" class="img-fluid " alt="Responsive image">
+            </div>
+         </div>
+
+      <div class="col-sm-10 col-lg-6 order-lg-1 my-auto showcase-text">
+
+        <h2>1) Aumenta le tu opportunità di affitto</h2>
+        <p class="lead mb-0">Lo sappiamo i grandi appartamenti sono difficili da affittare e gestire, avere una casa vuota non è solo un mancato guadagno ma un costo.
+         </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-10 col-lg-6 text-white showcase-img">
+        <div class="imgInfo1">
+    <img src="https://image.freepik.com/free-vector/busines-insurance-with-umbrella-protection_7087-1026.jpg" class="img-fluid " alt="Responsive image">
+      </div>
+      </div>
+      <div class="col-12 col-lg-6 showcase-text">
+        <h2>2)La soluzione migliore?</h2>
+        <p class="lead mb-0">Affittare le singole stanze a studenti e giovani lavoratori ma richiede tanto tempo e molta fatica per gestire visite, referenze, contatti e pagamenti.  </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-lg-6 order-lg-2 text-white showcase-img" >
+        <div class="imgInfo1">
+
+        <img src="https://image.freepik.com/free-vector/online-friends-concept-illustration_114360-2604.jpg" class="img-fluid " alt="Responsive image">
+</div>
+      </div>
+      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+        <h2>3) Ora c'è Cooabit</h2>
+        <p class="lead mb-0">Gli inquilini li troviamo noi, verrai contattato solo quando ci sarà un gruppo adatto a completare la tua offerta. Potrai controllare le referenze e interagire in modo semplice e veloce attraverso la nostra piattaforma.
+     </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-10 col-lg-6 text-white showcase-img">
+        <div class="imgInfo1">
+    <img src="https://image.freepik.com/free-vector/young-people-holding-blank-banner_52683-19652.jpg" class="img-fluid " alt="Responsive image">
+      </div>
+      </div>
+      <div class="col-12 col-lg-6 showcase-text">
+        <h2>4) Iscriviti Subito</h2>
+        <p class="lead mb-2">Solo pochi passaggi e la tua casa sarà online.</p>
+
+            <a href="{% url 'registrazione_view_owner' %}">
+              <button type="submit" class="btn btn-primary btn-lg active" id="button-addon2"  type="submit">Pubblica la tua casa</button>
+            </a>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+
+<!-- Bootstrap core JavaScript -->
+<!-- <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script> -->
+{% endblock content %}
