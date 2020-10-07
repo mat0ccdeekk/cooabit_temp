@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '=a@4lzk!ky5u^*+wn7spfxo^%y+p(w78d=n-zy$6p#741qzx5q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['.herokuapp.com', 'cooabit.herokuapp.com', 'https://cooabit.herokuapp.com/', 'www.cooabit.com', 'http://www.cooabit.com', 'https://www.cooabit.com', 'cooabit.com', '127.0.0.1', '127.0.0.1:8000', 'localhost', '0.0.0.0', '18.192.105.104']
 
