@@ -1,0 +1,66 @@
+
+.onBord{
+	background-color: #F7F9F9;
+}
+
+
+.firstInfo{
+  position: relative;
+  padding-bottom: 20%;
+  padding-top: 10%;
+}
+.logo1{
+  display: block;
+  margin-left: 40px;
+  margin-right: auto;
+  width: 90%;
+}
+
+
+
+.intro{
+
+	padding: 25px 50px 75px 100px;
+}
+.box{
+	width: 60%;
+	text-align: center;
+	margin: 0 auto;
+
+}
+
+
+.img1{
+width: 320px;
+height: 200px;
+
+}
+.img2{
+width: 250px;
+height: 200px;
+
+}
+.img3{
+width: 320px;
+height: 200px;
+
+}
+/* .contain-max {
+  width: 1120px;
+  height: 400px;
+
+  display: flex;
+  align-items: center;
+} */
+
+.imgInfo1{
+	padding-left: 150px;
+}
+
+.imgInfo2{
+	padding-left: 150px;
+}
+
+.imgInfo1{
+	padding-left: 150px;
+}

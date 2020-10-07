@@ -147,13 +147,14 @@ DATETIME_FORMAT = "d.m.Y H:i:s"
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join((BASE_DIR), 'staticfiles ')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+print('staticfiles ',STATIC_ROOT)
+STATICFILES_DIRS =  [ os.path.join(BASE_DIR, 'static')]
 
 #cartelle per aggiungere file multimediali
-MEDIA_ROOT = os.path.join((BASE_DIR), 'media-serve')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media-serve')
+print('static media ',MEDIA_ROOT)
+
 MEDIA_URL = '/media/'
 
 # LOGIN_REDIRECT_URL = "/"

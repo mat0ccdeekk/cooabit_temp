@@ -1,12 +1,12 @@
 aioredis==1.1.0
-asgiref
+asgiref==3.2.10
 async-timeout==3.0.0
 attrs==20.2.0
 autobahn==18.6.1
 Automat==20.2.0
 cffi==1.14.2
-channels
-channels-redis
+channels==2.3.0
+channels-redis==2.2.1
 constantly==15.1.0
 cryptography==3.1
 daphne==2.5.0
@@ -29,7 +29,7 @@ hyperframe==5.2.0
 hyperlink==20.0.1
 idna==2.10
 incremental==17.5.0
-msgpack==1.0
+msgpack==0.5.6
 packaging==20.4
 Pillow==7.1.2
 priority==1.3.0
@@ -49,5 +49,6 @@ txaio==2.10.0
 Unidecode==1.1.1
 websockets==8.1
 zope.interface==5.1.0
+
 gunicorn
 django-heroku
