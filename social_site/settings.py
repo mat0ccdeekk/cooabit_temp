@@ -145,12 +145,12 @@ DATETIME_FORMAT = "d.m.Y H:i:s"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join((BASE_DIR), 'staticfiles ')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-STATIC_URL = '/static/'
-STATIC_ROOT = '/home/ubuntu/demoEnv/static-serve/'
-
 
 #cartelle per aggiungere file multimediali
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media-serve')
@@ -204,7 +204,7 @@ else:
         'default': {
             'BACKEND': 'channels_redis.core.RedisChannelLayer',
             'CONFIG': {
-                "hosts": [('www.cooabit.com', 6379)],
+                "hosts": [('www.cooabit.herokuapp.com', 6379)],
             },
         },
     }
