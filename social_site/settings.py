@@ -189,26 +189,16 @@ MESSAGE_TAGS={
 }
 
 # Channels
-if DEBUG:
-    ASGI_APPLICATION = 'social_site.routing.application'
-    CHANNEL_LAYERS = {
-        'default': {
-            'BACKEND': 'channels_redis.core.RedisChannelLayer',
-            'CONFIG': {
-                "hosts": [('127.0.0.1', 6379)],
-            },
+
+ASGI_APPLICATION = 'social_site.routing.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
         },
-    }
-else:
-    ASGI_APPLICATION = 'social_site.routing.application'
-    CHANNEL_LAYERS = {
-        'default': {
-            'BACKEND': 'channels_redis.core.RedisChannelLayer',
-            'CONFIG': {
-                "hosts": [('www.cooabit.herokuapp.com', 6379)],
-            },
-        },
-    }
+    },
+}
 
 
 l = [
