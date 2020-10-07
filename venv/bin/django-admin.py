@@ -1,4 +1,4 @@
-#!/home/gigino/cooabit_temp/social_site/venv/bin/python3
+#!/home/gigino/cooabit_temp/venv/bin/python3
 from django.core import management
 
 if __name__ == "__main__":
