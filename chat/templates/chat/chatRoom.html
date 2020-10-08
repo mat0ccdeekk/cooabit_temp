@@ -36,7 +36,8 @@
             noMessages: true,
             loggedInUser: {{ current_user }}[0],
             chatUsersMap: {},
-            chatSocket: new WebSocket('ws://' + window.location.host + '/ws/chat/' + {{ room_name_json }} + '/')
+            var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+            chatSocket: new WebSocket(ws_scheme +  '://' + window.location.host + '/ws/chat/' + {{ room_name_json }} + '/')
         }),
         methods: {
             send () {

@@ -87,7 +87,8 @@
 			    if(this.privateView) {
       			this.chatUsersMap[this.loggedInUser.pk] = this.loggedInUser.fields.username
     				this.chatUsersMap[this.selectedUser.pk] = this.selectedUser.fields.username
-    				this.chatSocket = new WebSocket('ws://' + window.location.host + '/ws/chat/' + this.getChatToken() + '/')
+            var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+    				this.chatSocket = new WebSocket(ws_scheme +  '://' + window.location.host + '/ws/chat/' + this.getChatToken() + '/')
             setTimeout(() => {document.getElementById("bottomOfArea").scrollIntoView({ block: 'end',  behavior: 'smooth' }) }, 0)
             this.chatSocket.onmessage = (m) => {
     				  let message = {
