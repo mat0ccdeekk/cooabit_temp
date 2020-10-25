@@ -27,9 +27,11 @@ def underCostructionView(request):
     context = {"sub_form": sub_form}
     return render(request, 'core/underCostruction.html', context)
 
+#MODIFIED
+
 class HomeView(ListView):
     queryset = Casa.objects.all()
-    template_name = 'core/homepage.html'
+    template_name = 'core/index.html'
     context_object_name = "lista_case"
 
 #pagina del profilo utente
@@ -100,7 +102,7 @@ def myHomeView(request, pk):
             casalike[c] = c.thunders.all()
 
     context = {"user": user, "lista_case": casa, "conta_case": conta_case, "casalike": casalike}
-    return render(request, 'core/le_mie_case.html', context)
+    return render(request, 'category-2-rooms.html', context)
 
 def searchView(request):
     #filtro prezzo

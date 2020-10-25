@@ -1,0 +1,151 @@
+extends _pug-includes/layout.pug
+
+block vars
+    - var active = 'home'
+
+
+block content
+    section.hero-home
+        .swiper-container.hero-slider
+            .swiper-wrapper.dark-overlay
+                .swiper-slide(style="background-image:url('{% static 'img/photo/photo-1501621965065-c6e1cf6b53e2.jpg'%}')")
+                .swiper-slide(style="background-image:url('{% static 'img/photo/photo-1519974719765-e6559eac2575.jpg'%}')")
+                .swiper-slide(style="background-image:url('{% static 'img/photo/photo-1490578474895-699cd4e2cf59.jpg'%}')")
+                .swiper-slide(style="background-image:url('{% static 'img/photo/photo-1534850336045-c6c6d287f89e.jpg'%}')")
+
+        .container.py-6.py-md-7.text-white.z-index-20
+            .row
+                .col-xl-10
+                    .text-center.text-lg-left
+                        p.subtitle.letter-spacing-4.mb-2.text-secondary.text-shadow Trova la stanza e i coinquilini
+                        h1.display-3.font-weight-bold.text-shadow Inizia adesso
+                    .search-bar.mt-5.p-3.p-lg-1.pl-lg-4
+                        form(action="#")
+                            .row
+                                .col-lg-4.d-flex.align-items-center.form-group
+                                    input.form-control.border-0.shadow-0(type="text", name="search", placeholder="What are you searching for?")
+                                .col-lg-3.d-flex.align-items-center.form-group
+                                    .input-label-absolute.input-label-absolute-right.w-100
+                                        label.label-absolute(for="location")
+                                            i.fa.fa-crosshairs
+                                            span.sr-only City
+                                        input.form-control.border-0.shadow-0(type="text", name="location", placeholder="Location" id="location")
+                                .col-lg-3.d-flex.align-items-center.form-group.no-divider
+                                    select.selectpicker(title='Categories', data-style="btn-form-control")
+                                        option(value='small') Bilocale
+                                        option(value='medium') Trilocale
+                                        option(value='large') Quadrilocale
+                                        option(value='x-large') Altro
+                                .col-lg-2
+                                    button.btn.btn-primary.btn-block.rounded-xl.h-100(type="submit") Search
+
+
+    section.py-6.bg-gray-100
+        .container
+            .text-center.pb-lg-4
+                p.subtitle.text-secondary Convivere con le persone giuste è importane
+                h2.mb-5 In pochi semplici passi
+
+            - var advantages = []
+            - advantages.push({name: 'Cerca la stanza per te', icon:'property-1'})
+            - advantages.push({name: 'Parla con i coinquilini', icon:'chat-app-1'})
+            - advantages.push({name: 'Fate una proposta', icon:'support-1'})
+
+            .row
+                each val, index in advantages
+                    .col-lg-4.mb-3.mb-lg-0.text-center
+                        .px-0.px-lg-3
+                            .icon-rounded.bg-primary-light.mb-3
+                                +svgIcon(val.icon, 'text-primary w-2rem h-2rem')
+                            h3.h5 #{val.name}
+                            p.text-muted #{dummyText[index].substr(0, 150)}
+
+    section.py-6
+        .container
+            .row.mb-lg-6
+                .col-md-8
+                    p.subtitle.text-secondary Trova oggi la tua stanza
+                    h2.mb-md-0 Metti like, ai coinquilini ci pensiamo noi
+                .col-md-4.d-md-flex.align-items-center.justify-content-end
+                    a.text-muted.text-sm(href="category-rooms.html") 
+                        | See all featured listings
+                        i.fas.fa-angle-double-right.ml-2
+
+    .container-fluid
+        include _pug-includes/inc-slider-homes.pug
+        
+        
+        
+        section.py-6.bg-gray-100
+            .container
+                .row.mb-lg-6
+                    .col-md-8
+                        p.subtitle.text-secondary Non sei solo
+                        h2.mb-md-0 Tante altre persone cercano una casa da condividere
+                    .col-md-4.d-md-flex.align-items-center.justify-content-end
+                        a.text-muted.text-sm(href="team.html") 
+                            | Meet us all
+                            i.fas.fa-angle-double-right.ml-2
+
+                - var people = []
+                - people.push({name: 'Mattia', position: 'studente', icon:'destination-map-1', bgClass: 'bg-secondary-light', iconClass: 'text-primary'})    
+                - people.push({name: 'Marianna', position: 'lavoratore', icon:'pay-1', bgClass: 'bg-secondary-light', iconClass: 'text-primary'})
+                - people.push({name: 'Vanessa', position: 'studente',icon:'real-estate-1', bgClass: 'bg-secondary-light', iconClass: 'text-secondary'})          
+                - people.push({name: 'Sergio', position: 'lavoratore',icon:'pay-1', bgClass: 'bg-secondary-light', iconClass: 'text-primary'})
+
+                .row
+                    each val, index in people
+                        +people(val, index)
+
+            
+    include _pug-includes/inc-guides.pug
+
+
+    include _pug-includes/inc-divider.pug
+
+
+    section.py-7
+        .container
+            .text-center
+                p.subtitle.text-primary Testimonials
+                h2.mb-5 Our dear customers said about us
+            // Slider main container
+            - var itemClass = 'w-100 h-100'
+            .swiper-container.testimonials-slider.testimonials
+                // Additional required wrapper
+                .swiper-wrapper.pt-2.pb-5
+                    // Slides
+                    each val in roomsJson.features
+                        .swiper-slide.px-3
+                            .testimonial.card.rounded-lg.shadow.border-0
+                                .testimonial-avatar
+                                    img.img-fluid(src=`{% static 'img/avatar/avatar-3.jpg' %}`, alt="...")
+                                .text
+                                    .testimonial-quote
+                                        i.fas.fa-quote-right
+                                    p.testimonial-text Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+                                    strong Jessica Watson
+
+                .swiper-pagination
+
+    section.py-6.bg-gray-100
+        .container
+            .row.mb-5
+                .col-md-8
+                    p.subtitle.text-secondary Gli ultimi articoli 
+                    h2 Il Blog
+                .col-md-4.d-md-flex.align-items-center.justify-content-end
+                    a.text-muted.text-sm(href="blog.html")
+                        | See all articles
+                        i.fas.fa-angle-double-right.ml-2
+
+            .row
+                - var posts = []
+                - posts.push({name: 'Autumn fashion tips and tricks', image: "{% static 'img/photo/photo-1512917774080-9991f1c4c750.jpg' %}", intro: 'Pellentesque habitant morbi tristique senectus. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.  Mauris placerat eleifend leo.', author: 'John Slim', category: 'Travel'})
+                - posts.push({name: 'Newest photo apps', image: "{% static 'img/photo/photo-1522771739844-6a9f6d5f14af.jpg' %}", intro: 'ellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Aenean ultricies mi vitae est. ', author: 'John Slim', category: 'Living'})
+                - posts.push({name: 'Best books about Photography', image: "{% static 'img/photo/photo-1482463084673-98272196658a.jpg' %}", intro: 'Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.  Mauris placerat eleifend leo.', author: 'John Slim', category: 'Travel'})
+
+                each val in posts
+                    +blog(val, 'hover-animate')
+
+    include _pug-includes/inc-instagram.pug

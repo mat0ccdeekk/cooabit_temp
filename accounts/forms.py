@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Profile, ProfileP
 from social_site import settings
 
+#send email
 class FormEmail(forms.Form):
     email = forms.CharField(widget=forms.Textarea(attrs={'placeholder': "Esempio : <div calss='container'> <img src='https://www.cooabit.com/static/cooabit.png' height='0' width='160'> <br> Ciao <h2>name</h2>,come stai? </div> " }))
 
@@ -32,19 +33,15 @@ class ProfileForm(forms.ModelForm):
     )
     city = forms.CharField(label="", max_length=50, required=True, widget=forms.TextInput(attrs={'placeholder': 'Città'}))
     occupation = forms.CharField(label="", max_length=50, required=True, widget=forms.TextInput(attrs={'placeholder': 'Occupazione'}))
-    age = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}, format=settings.DATE_INPUT_FORMATS), label="", required=False)
+    # age = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}, format=settings.DATE_INPUT_FORMATS), label="", required=False)
     gender = forms.ChoiceField(widget=forms.RadioSelect(), choices=sesso, label="", required=False)
-    idZoom1 = forms.CharField(label="", max_length=300, widget=forms.Textarea(), required=False)
-    idZoom2 = forms.CharField(label="", max_length=300, widget=forms.Textarea(), required=False)
-    pass1 = forms.CharField(label="", max_length=300, widget=forms.Textarea(), required=False)
-    pass2 = forms.CharField(label="", max_length=300, widget=forms.Textarea(), required=False)
-    link1 = forms.CharField(label="", max_length=300, widget=forms.Textarea(), required=False)
-    link2 = forms.CharField(label="", max_length=300, widget=forms.Textarea(), required=False)
+
 
 
     class Meta:
         model = Profile
-        fields = ['city', 'occupation' , 'age', "gender", "state", "mobile", "photo", "aboutMe", "maxima", "pet", "idZoom1", "idZoom2", "pass1", "pass2", "link1", "link2"]
+        # fields = ['city', 'occupation' , 'age', "gender", "mobile", "photo",]
+        fields = ['city', 'occupation' , "gender", "mobile", "photo",]
 
 
 class ProfileFormP(forms.ModelForm):

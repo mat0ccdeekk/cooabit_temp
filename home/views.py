@@ -70,7 +70,7 @@ def visualizzaCasa(request, pk):
     if casa.via != "none":
         via = casa.via
     context = {"casa": casa, "prezzoStudente": prezzoStudente, "via": via}
-    return render(request, "home/singola_casa.html", context)
+    return render(request, "detail-rooms.html", context)
 
 def creaThunder(request, pk):
     casa = get_object_or_404(Casa, pk=pk)

@@ -1,0 +1,13 @@
+- gallery = []
+- gallery.push({title: 'Our street',small : "{{ casa.foto1.url }}", big:  "{{ casa.foto1.url }}"})
+- gallery.push({title: 'Outside', small: "{{ casa.foto2.url }}", big:  "{{ casa.foto2.url }}"})
+- gallery.push({title: 'Rear entrance',small: "{{ casa.foto3.url }}", big:  "{{ casa.foto3.url }}"})
+- gallery.push({title: 'Kitchen',small: "{{ casa.foto4.url }}", big: "{{ casa.foto4.url }}"})
+- gallery.push({title: 'Bedroom',small: "{{ casa.foto5.url }}", big:  "{{ casa.foto5.url }}"})
+- gallery.push({title: 'Bedroom',small: "{{ casa.foto6.url }}", big:  "{{ casa.foto6.url }}"})
+
+.row.gallery.mb-3.ml-n1.mr-n1
+    each val in gallery
+        .col-lg-4.col-6.px-1.mb-2
+            a(href=path + val.big, data-fancybox='gallery', title=val.title)
+                img.img-fluid(src=path + val.small, alt='...', style="width: 100%; height: 200px; object-fit: cover;")

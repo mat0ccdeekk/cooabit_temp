@@ -99,16 +99,7 @@ src="https://www.facebook.com/tr?id=351694849326894&ev=PageView&noscript=1"
 		</a>
 
 		{% if request.user.email == "mattialavecchia@gmail.com" or request.user.email == "sergio.gualtieri@gmail.com" or request.user.email == "mattia.lavecchia@gmail.com" or    request.user.email == "admin@admin.it" or request.user.email == "admin1@admin1.it" %}
-			<!-- <ul class="navbar-nav ml-auto ">
-				<li class="nav-item active pt-2 ">
-				 <a class="nav-link" href="{% url 'manda_email' %}"><h5>Email</h5></a>
-				</li>
-			</ul> -->
-			<ul class="navbar-nav ml-auto ">
-				<li class="nav-item active pt-2 ">
-				 <a class="nav-link" href="/messages"><h5>Chat</h5></a>
-				</li>
-			</ul>
+
 		{% endif %}
 
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

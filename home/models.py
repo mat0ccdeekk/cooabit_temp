@@ -39,7 +39,9 @@ class Casa(models.Model):
     ascensore = models.CharField(blank=True, null=True, max_length=40, default='none')
     ariaCond = models.CharField(blank=True, null=True, max_length=40, default="none")
     wifi = models.CharField(blank=True, null=True, max_length=40, default="none")
-
+    tv = models.CharField(blank=True, null=True, max_length=40, default="si")
+    riscaldamento = models.CharField(blank=True, null=True, max_length=40, default="si")
+    lavatrice = models.CharField(blank=True, null=True, max_length=40, default="si")
 
     stanzaDoppia = models.IntegerField(blank=True, null=True, default="0")
     stanzaSingola = models.IntegerField(blank=True, null=True, default="0")

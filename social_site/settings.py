@@ -16,7 +16,6 @@ from django.contrib import messages
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -26,7 +25,7 @@ SECRET_KEY = '=a@4lzk!ky5u^*+wn7spfxo^%y+p(w78d=n-zy$6p#741qzx5q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.herokuapp.com', 'cooabit.herokuapp.com', 'https://cooabit.herokuapp.com/', 'www.cooabit.com', 'http://www.cooabit.com', 'https://www.cooabit.com', 'cooabit.com', '127.0.0.1', '127.0.0.1:8000', 'localhost', '0.0.0.0', '18.192.105.104']
+ALLOWED_HOSTS = ['www.cooabit.com', 'http://www.cooabit.com', 'https://www.cooabit.com', 'cooabit.com', '127.0.0.1', 'localhost', '0.0.0.0', '18.192.105.104']
 
 # CHAT_WS_SERVER_HOST = 'localhost'
 # CHAT_WS_SERVER_PORT = 5002
@@ -51,10 +50,17 @@ INSTALLED_APPS = [
     'custom_app',
     'channels',
     'chat',
+    'rest_framework',
+    'rest_framework.authtoken',
 
 ]
 
-
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -74,12 +80,11 @@ ROOT_URLCONF = 'social_site.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['./templates', os.path.join(BASE_DIR, 'templates'),
-                os.path.join(BASE_DIR, 'custom_app/templates'),
-                os.path.join(BASE_DIR, 'pay/templates'),
-                os.path.join(BASE_DIR, 'accounts/templates'),
-                os.path.join(BASE_DIR, 'core/templates'),
-                os.path.join(BASE_DIR, 'home/templates')],
+        'DIRS': [
+                BASE_DIR, 'frontend/dist',
+                BASE_DIR, 'templates',
+
+                ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -88,6 +93,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+
         },
     },
 ]
@@ -145,16 +151,15 @@ DATETIME_FORMAT = "d.m.Y H:i:s"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend/dist')
+]
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-print('staticfiles ',STATIC_ROOT)
-STATICFILES_DIRS =  [ os.path.join(BASE_DIR, 'static')]
+
 
 #cartelle per aggiungere file multimediali
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media-serve')
-print('static media ',MEDIA_ROOT)
-
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media-serve')
 MEDIA_URL = '/media/'
 
 # LOGIN_REDIRECT_URL = "/"
@@ -209,6 +214,8 @@ CACHES = {
                 }
     }
 }
+
+
 
 
 l = [
@@ -277,5 +284,3 @@ LOGGING = {
         }
     }
 }
-# INTERNAL_IPS = ['127.0.0.1', 'localhost']
-# SESSION_COOKIE_AGE = 12096000
