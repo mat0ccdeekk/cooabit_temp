@@ -25,7 +25,7 @@ SECRET_KEY = '=a@4lzk!ky5u^*+wn7spfxo^%y+p(w78d=n-zy$6p#741qzx5q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.cooabit.com', 'http://www.cooabit.com', 'https://www.cooabit.com', 'cooabit.com', '127.0.0.1', 'localhost', '0.0.0.0', '18.192.105.104']
+ALLOWED_HOSTS = ['cooabit.herokuapp.com', 'www.cooabit.com', 'http://www.cooabit.com', 'https://www.cooabit.com', 'cooabit.com', '127.0.0.1', 'localhost', '0.0.0.0', '18.192.105.104']
 
 # CHAT_WS_SERVER_HOST = 'localhost'
 # CHAT_WS_SERVER_PORT = 5002
