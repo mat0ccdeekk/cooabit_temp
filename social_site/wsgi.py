@@ -14,9 +14,3 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'social_site.settings')
 
 application = get_wsgi_application()
-
-
-from whitenoise import WhiteNoise
-
-application = WhiteNoise(application, root='../staticfiles')
-application.add_files('../staticfiles', prefix='more-files/')
