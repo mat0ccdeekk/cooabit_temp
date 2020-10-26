@@ -31,7 +31,7 @@ def underCostructionView(request):
 
 class HomeView(ListView):
     queryset = Casa.objects.all()
-    template_name = 'core/index.html'
+    template_name = 'index.html'
     context_object_name = "lista_case"
 
 #pagina del profilo utente
