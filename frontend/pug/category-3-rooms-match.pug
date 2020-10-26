@@ -13,23 +13,19 @@ block content
         .container
             .row.mb-5
                 .col-md-8 
-                    h1 MyLike  
-                    | {% if request.user.is_authenticated  %} 
+                    h1 MyMatch  
+                    | {% if request.user.is_authenticated  %}
 
-                    p.lead.text-muted.text-justify {{user.first_name}} {% if conta_case < 1  %} abbiamo notato che non hai nessuna casa salvata. 
-                        | Noi, semplifichiamo la ricerca proponendoti le soluzioni più adatte a te, evitando liste infinite, prezzi nascosti 
-                        |e stanze non più disponibili.
-                        |{% else %} 
-                        |ecco le tue case preferite. 
-                    p.lead.text-muted Controlla la pagina 
-                        a(href="{% url 'my_match' pk=request.user.pk %}") MyMatch 
-                        |per conoscere i tuoi futuri inquilini
-                    | {% endif %}
+                    p.lead.text-muted.text-justify {{user.first_name}} {% if conta_case < 1  %} 
+                        |Non hai ancora match ! I coinquilini fanno la differenza, ti aiuteremo a trovare quelli che fanno per te. 
+                        |La nostra piattaforma unisce profili compatibili dando la possibilità di avere un esperienza di co living da non dimenticare.
+                        |{% else %} ecco i tuoi match. 
+                        | {% endif %}
                 .col-md-4.d-md-flex.align-items-center.justify-content-end
     
             .row
                                           
-                | {% for casa in lista_case %}
+                | {% for casa, coinqulino in utenti.items %}
                 | {% if casa.active == 'True' %}
                 div(class='col-sm-6 col-xl-4 mb-5 hover-animate')
                     .card.h-100.border-0.shadow
@@ -50,24 +46,13 @@ block content
                                 i.fa.fa-map-marker.text-secondary.opacity-4.mr-1
                                 | {{ casa.citta }}
                             .form-group.col-md-4.mb-0
-                              | {% if  request.user.is_authenticated %}
+                            
                               form(action="{% url 'thunder_casa' %}" method='post')
                                 | {% csrf_token %}
-                                | {% if  request.user.is_authenticated and casa in user.thunders.all %}
-                                button.btn.btn-info.btn-sm(type='submit' name='casa_id' value='{{ casa.id }}')
-                                  |  dislike
-                                |                                          {% else %}
                                 button.btn.btn-primary.btn-sm(type='submit' name='casa_id' value='{{ casa.id }}')
                                   i.fas.fa-house-user  
-                                  |  like
-                                |                                      {% endif %}
-                              |                              {% else %}
-                              form(action="{% url 'login' %}" method='post')
-                                | {% csrf_token %}
-                                button.btn.btn-primary.btn-sm(type='submit' name='casa_id' value='{{ casa.id }}')
-                                  i.fas.fa-house-user  
-                                  |  like
-                              |                              {% endif %}
+                                  |  chat
+
                           p.text-sm.text-muted {{casa.zona}}
                           p.card-text.d-flex.justify-content-between.text-gray-800.text-sm
                             span.mr-1
@@ -94,9 +79,9 @@ block content
                             h2.mb-5 In pochi semplici passi
 
                         - var advantages = []
-                        - advantages.push({name: 'Cerca la stanza per te', icon:'property-1'})
-                        - advantages.push({name: 'Parla con i coinquilini', icon:'chat-app-1'})
-                        - advantages.push({name: 'Fate una proposta', icon:'support-1'})
+                        - advantages.push({name: 'Metti like alle case', icon:'property-1'})
+                        - advantages.push({name: 'Effettua un match', icon:'checked-circle-1'})
+                        - advantages.push({name: 'Conosci possibili coinqulini', icon:'chat-app-1'})
 
                         .row
                             each val, index in advantages

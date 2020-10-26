@@ -11,7 +11,7 @@ urlpatterns = [
     #     view=views.UserListView.as_view(),
     #     name='user_list'
     # ),
-    path('contatti/<int:pk>/', views.index, name="index"),
+    path('contatti/<int:pk>/', views.index, name="my_match"),
     path('contatti/conferma/', views.confermaArrivata, name="conferma"),
 
 

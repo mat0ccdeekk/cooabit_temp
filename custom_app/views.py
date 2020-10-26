@@ -25,6 +25,7 @@ def index(request, pk):
     listaU = []
 
     # print("mie case",mieCase)
+    #(key: mia casa, value: possibili inquilini)
     utenti = {}
     sID = ""
     for c in mieCase:
@@ -49,9 +50,10 @@ def index(request, pk):
             print("oooops ncuna cosa non funziona va trovala")
             print(form)
     form = FormZoom()
+    conta_case = len(utenti)
 
-    context = {"user": user, "lista_case": mieCase, "utenti": utenti, "form": form}
-    return render(request, 'custom_app/index.html', context)
+    context = {"user": user, "lista_case": mieCase, "utenti": utenti, "form": form, "conta_case" : conta_case}
+    return render(request, 'category-3-rooms-match.html', context)
 
 #
 # def confermaZoom(request):

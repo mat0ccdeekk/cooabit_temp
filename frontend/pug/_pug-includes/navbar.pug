@@ -78,7 +78,7 @@ header(class=headerClass)
                             .dropdown-divider
                             +dropdownList('Components', componentLinks)
 
-                        meta({% if not request.user.is_authenticated  %})
+                        |{% if not request.user.is_authenticated  %}
                         li.nav-item
                             a.nav-link(href=`{% url 'login' %}`) Sign in
 
@@ -88,7 +88,12 @@ header(class=headerClass)
                         li.nav-item.mt-3.mt-lg-0.ml-lg-3.d-lg-none.d-xl-inline-block
                             a.btn.btn-primary(href=`${path}user-add-0.html`) Add a listing
 
-                        meta({% else %})
+                        |{% else %}
+                        li.nav-item
+                          a.nav-link(href="{% url 'my_match' pk=request.user.pk %}") MyMatch
+                        li.nav-item
+                          a.nav-link(href="{% url 'home_list' pk=request.user.pk %}") MyLike
+
                         li.nav-item.dropdown.ml-lg-3
                             .userDropdownMenuLink(style="width: 50px; height: 50px; position: relative; overflow: hidden; border-radius: 50%;" href="#",data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
                                 img(src="{{ user.profile.photo.url }}" , alt='Jack London', style="height: 100%; width: auto;")
@@ -97,6 +102,6 @@ header(class=headerClass)
                                 +dropdownList('Components', userDropdownLinks, true)
                                 .dropdown-divider
                                 a.dropdown-item(href=`{% url 'logout' %}`) <i class="fas fa-sign-out-alt mr-2 text-muted"></i> Sign out
-                        meta({% endif %})
+                        | {% endif %}
 
     // /Navbar

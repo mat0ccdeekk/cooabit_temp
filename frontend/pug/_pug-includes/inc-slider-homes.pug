@@ -4,12 +4,65 @@
     // Additional required wrapper
     .swiper-wrapper.pb-5
         // Slides
-        each val in roomsJson.features
-            .swiper-slide.h-auto.px-2
-                +home(val.properties, itemClass)
-        each val in roomsJson.features
-            .swiper-slide.h-auto.px-2
-                +home(val.properties, itemClass)                
+        | {% for casa in lista_case %}
+        | {% if casa.active == 'True' %}
+        .swiper-slide.h-auto.px-2
+          .w-100.h-100.hover-animate(data-marker-id='59c0c8e322f3375db4d89128')
+            .card.h-100.border-0.shadow
+              .card-img-top.overflow-hidden.gradient-overlay
+                img.d-block.w-100(src='{{ casa.foto1.url }}' alt='Home' style='width: 100%; height: 230px; object-fit: cover;')
+                a.tile-link(href='{{ casa.get_absolute_url }}')
+                .card-img-overlay-top.text-right
+                  a.card-fav-icon.position-relative.z-index-40(href='javascript: void();')
+                    svg.svg-icon.text-white
+                      use(xlink:href='#heart-1')
+              .card-body.d-flex.align-items-center
+                .w-100
+                  h6.card-title
+                    a.text-decoration-none.text-dark {{ casa.tipo_immobile }}
+                  .row
+                    .form-group.col-md-8.mb-0
+                      a.text-sm.text-secondary.card-subtitle.mb-2
+                        i.fa.fa-map-marker.text-secondary.opacity-4.mr-1
+                        | {{ casa.citta }}
+                    .form-group.col-md-4.mb-0
+                      | {% if  request.user.is_authenticated %}
+                      form(action="{% url 'thunder_casa' %}" method='post')
+                        | {% csrf_token %}
+                        | {% if  request.user.is_authenticated and casa in user.thunders.all %}
+                        button.btn.btn-info.btn-sm(type='submit' name='casa_id' value='{{ casa.id }}')
+                          |  dislike
+                        |                                          {% else %}
+                        button.btn.btn-primary.btn-sm(type='submit' name='casa_id' value='{{ casa.id }}')
+                          i.fas.fa-house-user  
+                          |  like
+                        |                                      {% endif %}
+                      |                              {% else %}
+                      form(action="{% url 'login' %}" method='post')
+                        | {% csrf_token %}
+                        button.btn.btn-primary.btn-sm(type='submit' name='casa_id' value='{{ casa.id }}')
+                          i.fas.fa-house-user  
+                          |  like
+                      |                              {% endif %}
+                  p.text-sm.text-muted {{casa.zona}}
+                  p.card-text.d-flex.justify-content-between.text-gray-800.text-sm
+                    span.mr-1
+                      i.fa.fa-ruler-combined.text-primary.opacity-4.text-xs.mr-1
+                      | {{ casa.m_quadri }} m
+                      sup 2
+                    span.mr-1
+                      i.fa.fa-bed.text-primary.opacity-4.text-xs.mr-1
+                      | {{ casa.postiTotali }}
+                    span.mr-1
+                      i.fa.fa-bath.text-primary.opacity-4.text-xs.mr-1
+                      | {{ casa.bagni }}
+                    span
+                      i.fa.fa-tag.text-primary.opacity-4.text-xs.mr-1
+                      | {{ casa.prezzo }}&euro;
+        |           {% else %}
+        |           {% endif %}
+        |           {% endfor %}
+                                        
 
     // If we need pagination
     .swiper-pagination

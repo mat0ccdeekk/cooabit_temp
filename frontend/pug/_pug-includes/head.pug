@@ -2,12 +2,12 @@ mixin ie(condition)
   <!--[!{condition}]>
   block
   <![endif]-->
-meta({% load static %})
-meta({%  load crispy_forms_tags %})
+|{% load static %}
+|{%  load crispy_forms_tags %}
 
 meta(charset='utf-8')
 meta(http-equiv='X-UA-Compatible', content='IE=edge')
-title Directory Theme by Bootstrapious
+title Cooabit
 meta(name='description', content='')
 meta(name='viewport', content='width=device-width, initial-scale=1')
 meta(name='robots', content='all,follow')
@@ -39,7 +39,7 @@ link(rel='stylesheet', href=`{% static 'css/style.default.css' %}`, id='theme-st
 link(rel='stylesheet', href=`{% static 'css/custom.css' %}`)
 
 // Favicon
-link(rel='shortcut icon', href=`{% static 'img/favicon.png' %}`)
+link(rel='shortcut icon', href=`{% static 'img/favicon1.png' %}`)
 
 // Tweaks for older IEs
 +ie('if lt IE 9')

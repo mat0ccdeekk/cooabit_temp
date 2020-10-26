@@ -31,14 +31,9 @@ block content
             p.text-muted.mb-5 You have no upcoming trips. Start exploring ideas for your next trip.
 
             p.mb-6 
-                img.img-fluid(src="img/illustration/undraw_trip_dv9f.svg", alt="", style="width: 400px;")
+                img.img-fluid(src="{% static 'img/illustration/undraw_trip_dv9f.svg' %}", alt="", style="width: 400px;")
 
             h2.mb-5 Your past bookings
 
-            - var itemClass = 'col-xl-3 col-md-4 col-sm-6 mb-5'
-            
-            .row
-                each val, index in roomsJson.features
-                    if (index < 4)
-                        +placeVisited(val.properties, itemClass)
-
+            .container-fluid
+                include _pug-includes/inc-slider-homes.pug

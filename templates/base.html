@@ -115,7 +115,7 @@ src="https://www.facebook.com/tr?id=351694849326894&ev=PageView&noscript=1"
 	 <a class="nav-link" href="{% url 'about_view'  %}"><h5>About</h5></a>
 	</li> -->
 	<li class="nav-item active pt-2 ">
- 	 <a class="nav-link" href="{% url 'index' pk=request.user.pk %}"><h5>Match</h5></a>
+ 	 <a class="nav-link" href="{% url 'my_match' pk=request.user.pk %}"><h5>Match</h5></a>
  	</li>
   <li class="nav-item active pt-2">
  	 <a class="nav-link" href="{% url 'home_list' pk=request.user.pk %}"><h5>Like</h5></a>

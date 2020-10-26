@@ -98,11 +98,11 @@ def myHomeView(request, pk):
     for c in Casa.objects.all():
         l = len(c.thunders.all())
         if l > 0 :
-            print("casa",c.thunders.all())
             casalike[c] = c.thunders.all()
+    print("Caseee ",casa)
 
     context = {"user": user, "lista_case": casa, "conta_case": conta_case, "casalike": casalike}
-    return render(request, 'category-2-rooms.html', context)
+    return render(request, 'category-3-rooms.html', context)
 
 def searchView(request):
     #filtro prezzo
