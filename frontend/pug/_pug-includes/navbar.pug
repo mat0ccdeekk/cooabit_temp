@@ -47,12 +47,7 @@ header(class=headerClass)
                             - activeClass = ''
                         a#homeDropdownMenuLink(href="index.html", class=`nav-link dropdown-toggle ${activeClass}`, data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
                             | Home
-                        .dropdown-menu(aria-labelledby='homeDropdownMenuLink')
-                            a.dropdown-item(href=`${path}index.html`) Rooms
-                            a.dropdown-item(href=`${path}index-2.html`) Restaurants
-                            a.dropdown-item(href=`${path}index-3.html`) Travel
-                            a.dropdown-item(href=`${path}index-4.html`) Real Estate <span class="badge badge-info-light ml-1 mt-n1">New</span>
-
+                      
                     include inc-megamenu.pug
 
                     li.nav-item
