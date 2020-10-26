@@ -1,5 +1,15 @@
 {% extends "baseChat.html" %}
 
+{% block style%}
+<style>
+    .rounded {border-radius: 15px}
+    .chat-box{
+        max-height:300px;
+        overflow:scroll;
+    }
+</style>
+{% endblock style %}
+
 {% block content %}
 <v-flex xs12 class="ma-4">
     <v-card class="pb-4 rounded">
@@ -13,18 +23,11 @@
  </v-flex>
 {% endblock content %}
 
-{% block style%}
-<style>
-    .rounded {border-radius: 15px}
-    .chat-box{
-        max-height:300px;
-        overflow:scroll;
-    }
-</style>
-{% endblock style %}
+
 
 {% block script %}
 <script>
+    var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
     new Vue({
         el: '#app',
         delimiters: ['[[', ']]'],
@@ -36,7 +39,6 @@
             noMessages: true,
             loggedInUser: {{ current_user }}[0],
             chatUsersMap: {},
-            var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
             chatSocket: new WebSocket(ws_scheme +  '://' + window.location.host + '/ws/chat/' + {{ room_name_json }} + '/')
         }),
         methods: {
@@ -56,9 +58,9 @@
         },
         created () {
             setTimeout(() => {document.getElementById("bottomOfArea").scrollIntoView({ block: 'end',  behavior: 'smooth' }) }, 0)
-            this.chatUsersMap[this.loggedInUser.pk] = this.loggedInUser.fields.username
+            this.chatUsersMap[this.loggedInUser.pk] = this.loggedInUser.fields.first_name
             this.chatSocket.onmessage = (m) => {
-              this.chatUsersMap[JSON.parse(m.data).sender.pk] = JSON.parse(m.data).sender.fields.username
+              this.chatUsersMap[JSON.parse(m.data).sender.pk] = JSON.parse(m.data).sender.fields.first_name
               let message = {
                     fields: {
                         sender: JSON.parse(m.data).sender.pk,

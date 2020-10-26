@@ -21,7 +21,7 @@
       <v-card class="rounded pb-4">
           <v-card-title class="blue white--text py-3">
             <v-layout v-if="privateView">
-              <span>[[selectedUser.fields.username]]</span>
+              <span>[[selectedUser.fields.first_name]]</span>
               <v-spacer></v-spacer>
               <v-avatar :size="25"color="grey lighten-4">
                 <img src="https://www.freewebmentor.com/default-avatar.png" alt="avatar">
@@ -65,7 +65,8 @@
             window.location.href = '/message/' + user.pk
           },
           getChatToken(){
-            return (this.loggedInUser.pk < this.selectedUser.pk ) ? ( this.loggedInUser.pk + this.loggedInUser.fields.username + this.selectedUser.pk + this.selectedUser.fields.username ) : this.selectedUser.pk + this.selectedUser.fields.username + this.loggedInUser.pk + this.loggedInUser.fields.username
+            return (this.loggedInUser.pk < this.selectedUser.pk ) ? ( this.loggedInUser.pk + this.loggedInUser.fields.first_name + this.selectedUser.pk + this.selectedUser.fields.first_name ) : this.selectedUser.pk + this.selectedUser.fields.first_name + this.loggedInUser.pk + this.loggedInUser.fields.first_name
+
           },
           recieveMessage (message) {
               this.noMessages = false
